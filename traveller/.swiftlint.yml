@@ -1,0 +1,13 @@
+disabled_rules:
+- trailing_whitespace
+- force_cast
+- private_over_fileprivate
+identifier_name:
+min_length: # only min_length
+error: 3 # only error
+excluded: # excluded via string array
+- i
+- j
+- p
+- n
+
