@@ -68,12 +68,7 @@ class TranslationService {
                     return
                 }
                 
-                guard let translation: String = translations.data.translations[0].translatedText else {
-                    callback(.failure(.noTranslationInData))
-                    return
-                }
-                
-                callback(.success(translation))
+                callback(.success(translations.data.translations[0].translatedText))
             }
         }
         task?.resume()

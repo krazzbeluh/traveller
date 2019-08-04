@@ -45,9 +45,11 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
     @IBAction func convertyButton(_ sender: Any) {
         convert()
     }
+    
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         hideKeyboard()
     }
+    
     @IBAction func didTapDone(_ sender: Any) {
         convert()
     }
@@ -66,6 +68,7 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
         changeRateText.text = "1 € = \(converter.changeRate) $"
         dateText.text = "Taux au \(dateFormatter.string(from: converter.changeRateDay)) :"
         switchActivityIndicator(shown: false)
+        convert()
     }
     
     func sendAlert(with type: ChangeRateService.ChangeRateDataTaskError) {
