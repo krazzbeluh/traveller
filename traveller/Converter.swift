@@ -35,7 +35,7 @@ class Converter {
             throw ConvertError.notANumber
         }
         
-        let text = "= \(String(value * changeRate)) $"
+        let text = String(value * changeRate)
         delegate?.displayDollar(with: text)
     }
     

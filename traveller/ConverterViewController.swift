@@ -6,6 +6,8 @@
 //  Copyright © 2019 Paul Leclerc. All rights reserved.
 //
 
+// Design : https://dribbble.com/shots/4816296-Stylish-Currency-Converter-iOS-app
+
 import UIKit
 
 class ConverterViewController: UIViewController, sendConverterDatasDelegate {
