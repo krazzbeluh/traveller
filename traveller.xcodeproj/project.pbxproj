@@ -10,7 +10,6 @@
 		9488066322F5D75F000A6D7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9488066222F5D75F000A6D7D /* AppDelegate.swift */; };
 		9488066822F5D75F000A6D7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9488066622F5D75F000A6D7D /* Main.storyboard */; };
 		9488066D22F5D760000A6D7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9488066B22F5D760000A6D7D /* LaunchScreen.storyboard */; };
-		9488067822F5D760000A6D7D /* travellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9488067722F5D760000A6D7D /* travellerTests.swift */; };
 		9488068322F5D760000A6D7D /* travellerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9488068222F5D760000A6D7D /* travellerUITests.swift */; };
 		9488069A22F5D7E2000A6D7D /* ChampagneLimousinesBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9488069622F5D7E2000A6D7D /* ChampagneLimousinesBold.ttf */; };
 		9488069B22F5D7E2000A6D7D /* ChampagneLimousines.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9488069722F5D7E2000A6D7D /* ChampagneLimousines.ttf */; };
@@ -30,6 +29,10 @@
 		948806B522F5D823000A6D7D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806B222F5D823000A6D7D /* WeatherViewController.swift */; };
 		948806B922F88BAD000A6D7D /* ConverterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806B822F88BAD000A6D7D /* ConverterDetailsViewController.swift */; };
 		948806BB22F9AC69000A6D7D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806BA22F9AC69000A6D7D /* NetworkService.swift */; };
+		948C018B22F9C7BC00451E2A /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948C018A22F9C7BC00451E2A /* ConverterTests.swift */; };
+		948C018F22F9CF2700451E2A /* FakeRateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948C018E22F9CF2700451E2A /* FakeRateData.swift */; };
+		948C019122F9D35600451E2A /* Rate.json in Resources */ = {isa = PBXBuildFile; fileRef = 948C019022F9D35600451E2A /* Rate.json */; };
+		948C019422F9D64600451E2A /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948C019222F9D64200451E2A /* URLSessionFake.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +59,6 @@
 		9488066C22F5D760000A6D7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9488066E22F5D760000A6D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9488067322F5D760000A6D7D /* travellerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = travellerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9488067722F5D760000A6D7D /* travellerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = travellerTests.swift; sourceTree = "<group>"; };
 		9488067922F5D760000A6D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9488067E22F5D760000A6D7D /* travellerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = travellerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9488068222F5D760000A6D7D /* travellerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = travellerUITests.swift; sourceTree = "<group>"; };
@@ -79,6 +81,10 @@
 		948806B222F5D823000A6D7D /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		948806B822F88BAD000A6D7D /* ConverterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterDetailsViewController.swift; sourceTree = "<group>"; };
 		948806BA22F9AC69000A6D7D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		948C018A22F9C7BC00451E2A /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
+		948C018E22F9CF2700451E2A /* FakeRateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRateData.swift; sourceTree = "<group>"; };
+		948C019022F9D35600451E2A /* Rate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Rate.json; sourceTree = "<group>"; };
+		948C019222F9D64200451E2A /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +146,10 @@
 		9488067622F5D760000A6D7D /* travellerTests */ = {
 			isa = PBXGroup;
 			children = (
-				9488067722F5D760000A6D7D /* travellerTests.swift */,
+				948C019222F9D64200451E2A /* URLSessionFake.swift */,
+				948C019022F9D35600451E2A /* Rate.json */,
+				948C018E22F9CF2700451E2A /* FakeRateData.swift */,
+				948C018A22F9C7BC00451E2A /* ConverterTests.swift */,
 				9488067922F5D760000A6D7D /* Info.plist */,
 			);
 			path = travellerTests;
@@ -276,6 +285,7 @@
 					};
 					9488067222F5D760000A6D7D = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 						TestTargetID = 9488065E22F5D75F000A6D7D;
 					};
 					9488067D22F5D760000A6D7D = {
@@ -323,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				948C019122F9D35600451E2A /* Rate.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +372,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9488067822F5D760000A6D7D /* travellerTests.swift in Sources */,
+				948C018F22F9CF2700451E2A /* FakeRateData.swift in Sources */,
+				948C019422F9D64600451E2A /* URLSessionFake.swift in Sources */,
+				948C018B22F9C7BC00451E2A /* ConverterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +578,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QW59HMZCU4;
 				INFOPLIST_FILE = travellerTests/Info.plist;
@@ -575,6 +589,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.paulleclerc.travellerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/traveller.app/traveller";
@@ -586,6 +601,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QW59HMZCU4;
 				INFOPLIST_FILE = travellerTests/Info.plist;

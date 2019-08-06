@@ -13,6 +13,11 @@ class NetworkService {
         self.url = URL(string: url)!
     }
     
+    init(networkSession: URLSession) {
+        self.url = URL(string: "https://www.google.com")!
+        self.networkSession = networkSession
+    }
+    
     var url: URL
     var networkSession = URLSession(configuration: .default)
     var task: URLSessionDataTask?
@@ -28,11 +33,6 @@ class NetworkService {
         task?.cancel()
         task = networkSession.dataTask(with: request) { (data, response, error) -> Void in
             DispatchQueue.main.async {
-                guard let data = data else {
-                    callback(.failure(.noData))
-                    return
-                }
-                
                 guard error == nil else {
                     callback(.failure(.error))
                     return
@@ -40,6 +40,11 @@ class NetworkService {
                 
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     callback(.failure(.responseNot200))
+                    return
+                }
+                
+                guard let data = data else {
+                    callback(.failure(.noData))
                     return
                 }
                 
