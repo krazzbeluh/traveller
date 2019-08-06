@@ -8,32 +8,7 @@
 
 import Foundation
 
-fileprivate struct WeatherDecoder: Decodable {
-    let weather: [Weather]
-    let main: Main
-}
-
-fileprivate struct Main: Decodable {
-    let temp: Float
-    let tempMin, tempMax: Float
-    
-    enum CodingKeys: String, CodingKey {
-        case temp
-        case tempMin = "temp_min"
-        case tempMax = "temp_max"
-    }
-}
-
-fileprivate struct Weather: Decodable {
-    let weatherDescription, icon: String
-    
-    enum CodingKeys: String, CodingKey {
-        case weatherDescription = "description"
-        case icon
-    }
-}
-
-class WeatherService {
+/*class WeatherService {
     static var shared = WeatherService()
     private init() {}
     
@@ -95,3 +70,4 @@ class WeatherService {
         task?.resume()
     }
 }
+*/

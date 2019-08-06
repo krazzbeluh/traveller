@@ -20,15 +20,6 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var refreshButton: UIButton!
     
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        formatter.locale = Locale(identifier: "FR-fr")
-        
-        return formatter
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         converter.delegate = self
@@ -67,9 +58,6 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
     }
     
     func displayChangeRate() {
-        changeRateText.text = "1 € = \(converter.changeRate) $"
-        dateText.text = "Taux au \(dateFormatter.string(from: converter.changeRateDay)) :"
-        switchActivityIndicator(shown: false)
         convert()
     }
     
@@ -90,16 +78,6 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
             message = "Impossible de mettre à jour le taux de change"
         }
         sendAlert(message: message)
-    }
-    
-    @IBAction func reloadCurrency(_ sender: Any) {
-        converter.getChangeRateValue()
-        switchActivityIndicator(shown: true)
-    }
-    
-    func switchActivityIndicator(shown: Bool) {
-        activityIndicator.isHidden = !shown
-        refreshButton.isHidden = shown
     }
     
     private func sendAlert(message: String) {

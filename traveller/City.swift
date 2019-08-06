@@ -18,7 +18,8 @@ class City {
     var temperatureF: Float {
         return 9 / 5 * temperature + 32
     }
-    var weather: String = ""
+    var weather: String?
+    var weatherIcon: Data?
     
     init(name: CityName) {
         self.name = name

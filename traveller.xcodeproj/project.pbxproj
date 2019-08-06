@@ -28,6 +28,8 @@
 		948806B322F5D823000A6D7D /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806B022F5D823000A6D7D /* ConverterViewController.swift */; };
 		948806B422F5D823000A6D7D /* TranslatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806B122F5D823000A6D7D /* TranslatorViewController.swift */; };
 		948806B522F5D823000A6D7D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806B222F5D823000A6D7D /* WeatherViewController.swift */; };
+		948806B922F88BAD000A6D7D /* ConverterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806B822F88BAD000A6D7D /* ConverterDetailsViewController.swift */; };
+		948806BB22F9AC69000A6D7D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806BA22F9AC69000A6D7D /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		948806B022F5D823000A6D7D /* ConverterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
 		948806B122F5D823000A6D7D /* TranslatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatorViewController.swift; sourceTree = "<group>"; };
 		948806B222F5D823000A6D7D /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		948806B822F88BAD000A6D7D /* ConverterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterDetailsViewController.swift; sourceTree = "<group>"; };
+		948806BA22F9AC69000A6D7D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +177,7 @@
 				948806A522F5D812000A6D7D /* City.swift */,
 				948806A622F5D812000A6D7D /* Converter.swift */,
 				948806A222F5D812000A6D7D /* TranslationService.swift */,
+				948806BA22F9AC69000A6D7D /* NetworkService.swift */,
 				948806A122F5D812000A6D7D /* Translator.swift */,
 				948806A322F5D812000A6D7D /* WeatherIconService.swift */,
 				948806A722F5D812000A6D7D /* WeatherService.swift */,
@@ -192,6 +197,7 @@
 		9488069522F5D7A2000A6D7D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				948806B822F88BAD000A6D7D /* ConverterDetailsViewController.swift */,
 				948806B022F5D823000A6D7D /* ConverterViewController.swift */,
 				948806B122F5D823000A6D7D /* TranslatorViewController.swift */,
 				948806B222F5D823000A6D7D /* WeatherViewController.swift */,
@@ -340,6 +346,8 @@
 				948806B522F5D823000A6D7D /* WeatherViewController.swift in Sources */,
 				948806AA22F5D812000A6D7D /* TranslationService.swift in Sources */,
 				948806A922F5D812000A6D7D /* Translator.swift in Sources */,
+				948806BB22F9AC69000A6D7D /* NetworkService.swift in Sources */,
+				948806B922F88BAD000A6D7D /* ConverterDetailsViewController.swift in Sources */,
 				948806AE22F5D812000A6D7D /* Converter.swift in Sources */,
 				948806AB22F5D812000A6D7D /* WeatherIconService.swift in Sources */,
 				948806A822F5D812000A6D7D /* WeatherStation.swift in Sources */,

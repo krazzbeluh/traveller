@@ -9,8 +9,34 @@
 import Foundation
 
 protocol sendWeatherStationDatasDelegate: class {
-    func displayWeather(in city: City)
-    func sendAlert(with type: WeatherService.WeatherDataTaskError)
+    func displayWeather(in city: City.CityName)
+    func sendAlert(with type: NetworkService.NetworkError)
+}
+
+// MARK: - Weather
+struct WeatherData: Decodable {
+    let list: [List]
+}
+
+// MARK: - List
+struct List: Decodable {
+    let weather: [Weather]
+    let main: Main
+}
+
+// MARK: - Main
+struct Main: Decodable {
+    let temp: Float
+}
+
+// MARK: - Weather
+struct Weather: Decodable {
+    let weatherDescription, icon: String
+    
+    enum CodingKeys: String, CodingKey {
+        case weatherDescription = "description"
+        case icon
+    }
 }
 
 class WeatherStation {
@@ -19,26 +45,48 @@ class WeatherStation {
     public let paris = City(name: .paris)
     public let newYork = City(name: .newYork)
     
+    private let weatherRequest = NetworkService(url: "http://api.openweathermap.org/data/2.5/group?id=5128581,2988507&lang=fr&units=metric&appid=cc7f297c71ae7bee297e310c4e0c96cc")
+    
     public func refreshWeather() {
-        WeatherService.shared.getWeather(at: .newYork) { result in
+        weatherRequest.getData { result in
             switch result {
-            case .success(let city):
-                self.newYork.temperature = city.temperature
-                self.newYork.weather = city.weather
-                self.delegate?.displayWeather(in: self.newYork)
-                
-                WeatherService.shared.getWeather(at: .paris) { result in
-                    switch result {
-                    case .success(let city):
-                        self.paris.temperature = city.temperature
-                        self.paris.weather = city.weather
-                        self.delegate?.displayWeather(in: self.paris)
-                    case .failure(let error):
-                        self.delegate?.sendAlert(with: error)
-                    }
-                }
             case .failure(let error):
-                self.delegate?.sendAlert(with: error)
+                print(error)
+            case .success(let data):
+                guard let weatherData = try? JSONDecoder().decode(WeatherData.self, from: data) else {
+                    print("Unable to decode data")
+                    return
+                }
+                
+                self.newYork.temperature = weatherData.list[0].main.temp
+                self.newYork.weather = weatherData.list[0].weather[0].weatherDescription
+//                self.newYork.weatherIcon = weatherData.list[0].weather[0].icon
+                let newYorkIconRequest = NetworkService(url: "http://openweathermap.org/img/wn/\(weatherData.list[0].weather[0].icon)@2x.png")
+                newYorkIconRequest.getData { result in
+                    switch result {
+                    case .success(let data):
+                        self.newYork.weatherIcon = data
+                        print(data)
+                    case .failure(let error):
+                        print(error)
+                    }
+                    self.delegate?.displayWeather(in: .newYork)
+                }
+                
+                self.paris.temperature = weatherData.list[1].main.temp
+                self.paris.weather = weatherData.list[1].weather[0].weatherDescription
+//                self.paris.weatherIcon = weatherData.list[1].weather[0].icon
+                let parisIconRequest = NetworkService(url: "http://openweathermap.org/img/wn/\(weatherData.list[1].weather[0].icon)@2x.png")
+                parisIconRequest.getData { result in
+                    switch result {
+                    case .success(let data):
+                        self.paris.weatherIcon = data
+                        print(data)
+                    case .failure(let error):
+                        print(error)
+                    }
+                    self.delegate?.displayWeather(in: .paris)
+                }
             }
         }
     }
