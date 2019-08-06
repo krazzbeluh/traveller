@@ -14,6 +14,10 @@ class TranslatorViewController: UIViewController, sendTranslatorDatasDelegate {
         super.viewDidLoad()
         
         Translator.delegate = self
+        
+        translateButton.contentHorizontalAlignment = .fill
+        translateButton.contentVerticalAlignment = .fill
+        translateButton.imageView?.contentMode = .scaleAspectFill
     }
     
     var textInFrench: String {
@@ -22,6 +26,7 @@ class TranslatorViewController: UIViewController, sendTranslatorDatasDelegate {
     
     @IBOutlet weak var textToTranslate: UITextView!
     @IBOutlet weak var translatedText: UILabel!
+    @IBOutlet weak var translateButton: UIButton!
     
     func hideKeyboard() {
         textToTranslate.resignFirstResponder()

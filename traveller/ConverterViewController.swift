@@ -19,12 +19,16 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
     @IBOutlet weak var changeRateText: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var convertButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         converter.delegate = self
         converter.getChangeRateValue()
-        // Do any additional setup after loading the view.
+        
+        convertButton.contentHorizontalAlignment = .fill
+        convertButton.contentVerticalAlignment = .fill
+        convertButton.imageView?.contentMode = .scaleAspectFill
     }
 
     func displayDollar(with value: String) {

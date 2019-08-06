@@ -33,12 +33,24 @@ class WeatherViewController: UIViewController, sendWeatherStationDatasDelegate {
     func displayWeather(in city: City.CityName) {
         switch city {
         case .paris:
-            parisTemperature.text = "\(weatherStation.paris.temperature) °C"
+            let temperature: String
+            if temperatureIsCelsius {
+                temperature = "\(weatherStation.paris.temperature) °C"
+            } else {
+                temperature = "\(weatherStation.paris.temperatureF) °F"
+            }
+            parisTemperature.text = temperature
             if let iconData = weatherStation.paris.weatherIcon {
                 parisIcon.image = UIImage(data: iconData)
             }
         case .newYork:
-            newYorkTemperature.text = "\(weatherStation.newYork.temperature) °C"
+            let temperature: String
+            if temperatureIsCelsius {
+                temperature = "\(weatherStation.newYork.temperature) °C"
+            } else {
+                temperature = "\(weatherStation.newYork.temperatureF) °F"
+            }
+            newYorkTemperature.text = temperature
             if let iconData = weatherStation.newYork.weatherIcon {
                 newYorkIcon.image = UIImage(data: iconData)
             }
