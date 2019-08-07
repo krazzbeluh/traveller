@@ -163,15 +163,15 @@
 		9488069222F5D791000A6D7D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				948806A422F5D812000A6D7D /* changeRateService.swift */,
-				948806A522F5D812000A6D7D /* City.swift */,
 				948806A622F5D812000A6D7D /* Converter.swift */,
-				948806A222F5D812000A6D7D /* TranslationService.swift */,
-				948806BA22F9AC69000A6D7D /* NetworkService.swift */,
+				948806A422F5D812000A6D7D /* changeRateService.swift */,
 				948806A122F5D812000A6D7D /* Translator.swift */,
-				948806A322F5D812000A6D7D /* WeatherIconService.swift */,
-				948806A722F5D812000A6D7D /* WeatherService.swift */,
+				948806A222F5D812000A6D7D /* TranslationService.swift */,
 				948806A022F5D812000A6D7D /* WeatherStation.swift */,
+				948806A522F5D812000A6D7D /* City.swift */,
+				948806A722F5D812000A6D7D /* WeatherService.swift */,
+				948806A322F5D812000A6D7D /* WeatherIconService.swift */,
+				948806BA22F9AC69000A6D7D /* NetworkService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

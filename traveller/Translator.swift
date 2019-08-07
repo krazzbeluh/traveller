@@ -16,12 +16,12 @@ protocol sendTranslatorDatasDelegate: class {
 class Translator {
     weak static var delegate: sendTranslatorDatasDelegate?
     
-    static var textToTranslate: String {
+    public static var textToTranslate: String {
         return delegate?.textInFrench.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
     }
     
     static func translate(_ text: String) {
-        TranslationService.shared.getTranslation { result in
+        TranslationService().getTranslation { result in
             switch result {
             case .success(let translation):
                 self.delegate?.displayTranslation(with: translation)

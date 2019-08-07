@@ -91,21 +91,23 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
         convert()
     }
     
-    func sendAlert(with type: ChangeRateService.ChangeRateDataTaskError) {
+    func sendAlert(with type: Error) {
         let message: String
         switch type {
-        case .noData:
+        case NetworkService.NetworkError.noData:
             message = "Impossible de mettre à jour le taux de change"
-        case .error:
+        case NetworkService.NetworkError.error:
             message = "Une erreur est survenue lors de la mise à jour du taux de change"
-        case .responseNot200:
+        case NetworkService.NetworkError.responseNot200:
             message = "Une erreur est survenue lors de la mise à jour du taux de change"
-        case .unableToDecodeData:
+        case ChangeRateService.ChangeRateDataTaskError.unableToDecodeData:
             message = "Impossible de mettre à jour le taux de change"
-        case .APINoSuccess:
+        case ChangeRateService.ChangeRateDataTaskError.APINoSuccess:
             message = "Une erreur est survenue lors de la mise à jour du taux de change"
-        case .noChangeRateInData:
+        case ChangeRateService.ChangeRateDataTaskError.noChangeRateInData:
             message = "Impossible de mettre à jour le taux de change"
+        default:
+            message = "Erreur: Inconnue"
         }
         sendAlert(message: message)
     }

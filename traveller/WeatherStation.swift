@@ -49,7 +49,6 @@ class WeatherStation {
             if self.iconResponses > 2 {
                 self.iconResponses = 0
             }
-            print(self.iconResponses)
         }
     }
     

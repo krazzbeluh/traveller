@@ -11,7 +11,7 @@
 protocol sendConverterDatasDelegate: class {
     func displayDollar(with: String)
     func displayChangeRate()
-    func sendAlert(with type: ChangeRateService.ChangeRateDataTaskError)
+    func sendAlert(with type: Error)
 }
 
 import Foundation
@@ -40,7 +40,7 @@ class Converter {
     }
     
     func getChangeRateValue(callback: @escaping (() -> Void)) {
-        ChangeRateService.shared.getChangeRate { result in
+        ChangeRateService().getChangeRate { result in
             
             switch result {
             case .success(let changeRate):

@@ -24,53 +24,26 @@ fileprivate struct Translation: Codable {
 }
 
 class TranslationService {
-    static var shared = TranslationService()
-    private init() {}
-    
-    private static let url = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDya4uHyUQTvadV4wYczyzjYMUtrg-nSWo&source=fr&target=en&format=text&q=" //swiftlint:disable:this line_length
-    private var task: URLSessionDataTask?
-    private var gTranslateSession = URLSession(configuration: .default)
-    
-    init(gTranslateSession: URLSession) {
-        self.gTranslateSession = gTranslateSession
-    }
-    
     enum TranslationDataTaskError: Error {
-        case noData, error, responseNot200, unableToDecodeData, noTranslationInData
+        case unableToDecodeData
     }
     
-    func getTranslation(callback: @escaping (Result<String, TranslationDataTaskError>) -> Void) {
-        let gTranslateUrl = URL(string: "\(TranslationService.url)\(Translator.textToTranslate)")!
-        var request = URLRequest(url: gTranslateUrl)
-        request.httpMethod = "GET"
-        
-        task?.cancel()
-        task = gTranslateSession.dataTask(with: request) { (data, response, error) -> Void in
-            DispatchQueue.main.async {
-                guard let data = data else {
-                    callback(.failure(.noData))
-                    return
-                }
-                
-                guard error == nil else {
-                    callback(.failure(.error))
-                    return
-                }
-                
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(.failure(.responseNot200))
-                    return
-                }
-                
+    private let translationRequest = NetworkService(url: "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDya4uHyUQTvadV4wYczyzjYMUtrg-nSWo&source=fr&target=en&format=text&q=\(Translator.textToTranslate)")
+    
+    public func getTranslation(callback: @escaping(Result<String, Error>) -> Void) {
+        translationRequest.getData{ result in
+            switch result {
+            case .success(let data):
                 guard let translations = try? JSONDecoder().decode(GTranslateDecoder.self, from: data) else {
-                    callback(.failure(.unableToDecodeData))
+                    callback(.failure(TranslationDataTaskError.unableToDecodeData))
                     print("Error: Couldn't decode data into rates")
                     return
                 }
                 
                 callback(.success(translations.data.translations[0].translatedText))
+            case .failure(let error):
+                callback(.failure(error))
             }
         }
-        task?.resume()
     }
 }
