@@ -10,8 +10,6 @@ import XCTest
 @testable import traveller
 
 class ConverterTests: XCTestCase {
-
-    var converter: Converter!
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

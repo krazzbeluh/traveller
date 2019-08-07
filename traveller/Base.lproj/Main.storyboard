@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Traduction-->
         <scene sceneID="f9D-Oa-PHu">
             <objects>
                 <viewController id="9Az-5E-n9k" customClass="TranslatorViewController" customModule="traveller" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,12 +74,13 @@
                                     <constraint firstItem="J8V-gP-86I" firstAttribute="leading" secondItem="qX9-aw-ewY" secondAttribute="leading" constant="50" id="aKI-Fd-bmk"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MC1-pc-0Ao">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MC1-pc-0Ao">
                                 <rect key="frame" x="130" y="371" width="154" height="154"/>
                                 <color key="backgroundColor" name="Blue"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="MC1-pc-0Ao" secondAttribute="height" multiplier="1:1" id="VIg-K6-00v"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Done"/>
                                 <connections>
                                     <action selector="translateText:" destination="9Az-5E-n9k" eventType="touchUpInside" id="0NP-FX-9ad"/>
@@ -108,7 +109,7 @@
                             <outletCollection property="gestureRecognizers" destination="Nud-vG-JeA" appends="YES" id="jxs-dF-5ZW"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" image="translate" id="kuf-WR-BqY"/>
+                    <tabBarItem key="tabBarItem" title="Traduction" image="translate" id="kuf-WR-BqY"/>
                     <connections>
                         <outlet property="textToTranslate" destination="J8V-gP-86I" id="L94-kc-o9U"/>
                         <outlet property="translateButton" destination="MC1-pc-0Ao" id="YkB-tb-Dcb"/>
@@ -124,7 +125,7 @@
             </objects>
             <point key="canvasLocation" x="21.600000000000001" y="14.039408866995075"/>
         </scene>
-        <!--Item 1-->
+        <!--Converter View Controller-->
         <scene sceneID="kAw-ez-GKC">
             <objects>
                 <viewController id="xWh-cZ-9hs" customClass="ConverterViewController" customModule="traveller" customModuleProvider="target" sceneMemberID="viewController">
@@ -203,12 +204,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8V-ZS-2AR">
-                                <rect key="frame" x="368" y="52" width="30" height="30"/>
+                                <rect key="frame" x="368" y="96" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="b8V-ZS-2AR" secondAttribute="height" multiplier="1:1" id="vNs-Ip-T0H"/>
                                     <constraint firstAttribute="width" constant="30" id="wf5-nK-tiX"/>
                                 </constraints>
                                 <state key="normal" image="InfoButton"/>
+                                <connections>
+                                    <action selector="infosButton" destination="xWh-cZ-9hs" eventType="touchUpInside" id="fc8-x5-50y"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -233,16 +237,14 @@
                             <outletCollection property="gestureRecognizers" destination="oku-hD-F6S" appends="YES" id="NHq-Gj-Q68"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" image="Dollar" id="3vS-Mr-y8r"/>
+                    <navigationItem key="navigationItem" id="jen-WD-zTf"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="awp-Yh-Dmk" id="RJZ-Yx-K1z"/>
-                        <outlet property="changeRateText" destination="a62-aG-FAP" id="qpy-4u-UJd"/>
                         <outlet property="convertButton" destination="l0M-1Z-Vc1" id="CjV-6g-MQy"/>
-                        <outlet property="dateText" destination="zFV-b5-whI" id="Cwu-C4-u4q"/>
                         <outlet property="moneyInEuro" destination="Nv0-KZ-rYC" id="0by-wW-GTV"/>
                         <outlet property="refreshButton" destination="Tas-Di-9Hg" id="1ba-xc-8Y6"/>
                         <outlet property="result" destination="zko-jX-vC8" id="w8W-2m-qB1"/>
+                        <segue destination="XRg-3J-iw9" kind="show" identifier="segueToConverterDetail" id="LPZ-53-YyK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SxM-cc-QOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -252,7 +254,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-86" y="-652"/>
+            <point key="canvasLocation" x="925" y="-688"/>
         </scene>
         <!--Converter Detail View Controller-->
         <scene sceneID="yaN-Es-Gad">
@@ -288,7 +290,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="reloadCurrency:" destination="xWh-cZ-9hs" eventType="touchUpInside" id="22s-go-L2d"/>
+                                            <action selector="reloadCurrency:" destination="XRg-3J-iw9" eventType="touchUpInside" id="wMT-y1-yzd"/>
                                         </connections>
                                     </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="awp-Yh-Dmk">
@@ -313,33 +315,43 @@
                                     <constraint firstItem="a62-aG-FAP" firstAttribute="centerX" secondItem="U0S-bF-gPU" secondAttribute="centerX" id="ewo-5A-MYp"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Hv-De-2tY">
-                                <rect key="frame" x="16" y="44" width="30" height="29.666666666666671"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="VVo-Fi-AQT"/>
-                                    <constraint firstAttribute="width" secondItem="5Hv-De-2tY" secondAttribute="height" multiplier="124:123" id="zGV-nc-PLM"/>
-                                </constraints>
-                                <state key="normal" image="Back"/>
-                                <connections>
-                                    <segue destination="xWh-cZ-9hs" kind="presentation" id="pP8-gA-gmZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" name="Blue"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="5Hv-De-2tY" firstAttribute="leading" secondItem="bU7-ca-5mY" secondAttribute="leading" constant="16" id="CLk-4e-lKs"/>
                             <constraint firstItem="U0S-bF-gPU" firstAttribute="leading" secondItem="bU7-ca-5mY" secondAttribute="leading" id="ESD-AY-r3U"/>
-                            <constraint firstItem="5Hv-De-2tY" firstAttribute="top" secondItem="bU7-ca-5mY" secondAttribute="top" id="bE4-MB-TvA"/>
                             <constraint firstItem="U0S-bF-gPU" firstAttribute="centerX" secondItem="wqt-Kn-1xL" secondAttribute="centerX" id="l7L-Ar-I7f"/>
                             <constraint firstItem="U0S-bF-gPU" firstAttribute="centerY" secondItem="wqt-Kn-1xL" secondAttribute="centerY" id="mk5-ZP-sDW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bU7-ca-5mY"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="awp-Yh-Dmk" id="jgf-Jg-Ir0"/>
+                        <outlet property="changeRateText" destination="a62-aG-FAP" id="rVc-mK-hSx"/>
+                        <outlet property="dateText" destination="zFV-b5-whI" id="5IR-N1-DWh"/>
+                        <outlet property="refreshButton" destination="Tas-Di-9Hg" id="6sl-FJ-Z72"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zu8-Fh-uU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="876" y="-651"/>
+            <point key="canvasLocation" x="1870" y="-688"/>
+        </scene>
+        <!--Convertion-->
+        <scene sceneID="v83-Am-L2J">
+            <objects>
+                <navigationController id="ag7-Ok-e9O" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Convertion" image="Dollar" id="tJ0-3D-ngx"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lHn-S0-ntj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xWh-cZ-9hs" kind="relationship" relationship="rootViewController" id="cBd-U8-vra"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UfI-kO-ddd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="-688"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mgM-T1-sDN">
@@ -353,7 +365,7 @@
                         <color key="selectedImageTintColor" name="Blue"/>
                     </tabBar>
                     <connections>
-                        <segue destination="xWh-cZ-9hs" kind="relationship" relationship="viewControllers" id="ket-KV-s48"/>
+                        <segue destination="ag7-Ok-e9O" kind="relationship" relationship="viewControllers" id="rOe-Vx-zhe"/>
                         <segue destination="9Az-5E-n9k" kind="relationship" relationship="viewControllers" id="kcW-zM-KAN"/>
                         <segue destination="s3h-Ip-tYV" kind="relationship" relationship="viewControllers" id="QJR-Y5-9Q4"/>
                     </connections>
@@ -362,7 +374,7 @@
             </objects>
             <point key="canvasLocation" x="-896" y="-321"/>
         </scene>
-        <!--Item 2-->
+        <!--Météo-->
         <scene sceneID="Rfy-CG-CtI">
             <objects>
                 <viewController id="s3h-Ip-tYV" customClass="WeatherViewController" customModule="traveller" customModuleProvider="target" sceneMemberID="viewController">
@@ -490,7 +502,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tpI-Ox-Hip"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" image="Weather" id="FGg-QS-5YV"/>
+                    <tabBarItem key="tabBarItem" title="Météo" image="Weather" id="FGg-QS-5YV"/>
                     <connections>
                         <outlet property="newYorkIcon" destination="yVk-tO-mr3" id="atS-A5-Jni"/>
                         <outlet property="newYorkTemperature" destination="n7E-WH-dWe" id="jbh-Co-Hl6"/>
@@ -505,7 +517,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back" width="124" height="123"/>
         <image name="Dollar" width="20" height="20"/>
         <image name="Done" width="132" height="133"/>
         <image name="EqualButton" width="128" height="128"/>
@@ -518,7 +529,4 @@
             <color red="0.10199999809265137" green="0.67599999904632568" blue="0.88200002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="pP8-gA-gmZ"/>
-    </inferredMetricsTieBreakers>
 </document>

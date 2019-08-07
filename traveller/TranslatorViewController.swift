@@ -18,6 +18,10 @@ class TranslatorViewController: UIViewController, sendTranslatorDatasDelegate {
         translateButton.contentHorizontalAlignment = .fill
         translateButton.contentVerticalAlignment = .fill
         translateButton.imageView?.contentMode = .scaleAspectFill
+        translateButton.layer.borderWidth = 10
+        translateButton.layer.cornerRadius = translateButton.frame.width / 2
+        translateButton.clipsToBounds = true
+        translateButton.layer.borderColor = UIColor(named: "Blue")?.cgColor
     }
     
     var textInFrench: String {

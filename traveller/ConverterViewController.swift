@@ -24,11 +24,33 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         converter.delegate = self
-        converter.getChangeRateValue()
+        converter.getChangeRateValue{ () in }
         
         convertButton.contentHorizontalAlignment = .fill
         convertButton.contentVerticalAlignment = .fill
         convertButton.imageView?.contentMode = .scaleAspectFill
+        convertButton.layer.borderWidth = 10
+        convertButton.layer.cornerRadius = convertButton.frame.width / 2
+        convertButton.clipsToBounds = true
+        convertButton.layer.borderColor = UIColor(named: "Blue")?.cgColor
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToConverterDetail" {
+            let successVC = segue.destination as! ConverterDetailViewController
+            successVC.converter = converter
+            print(1)
+        }
     }
 
     func displayDollar(with value: String) {
@@ -50,6 +72,10 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
     @IBAction func didTapDone(_ sender: Any) {
         convert()
     }
+    @IBAction func infosButton() {
+        performSegue(withIdentifier: "segueToConverterDetail", sender: self)
+    }
+    
     
     private func convert() {
         do {

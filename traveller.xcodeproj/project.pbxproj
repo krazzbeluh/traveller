@@ -11,8 +11,6 @@
 		9488066822F5D75F000A6D7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9488066622F5D75F000A6D7D /* Main.storyboard */; };
 		9488066D22F5D760000A6D7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9488066B22F5D760000A6D7D /* LaunchScreen.storyboard */; };
 		9488068322F5D760000A6D7D /* travellerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9488068222F5D760000A6D7D /* travellerUITests.swift */; };
-		9488069A22F5D7E2000A6D7D /* ChampagneLimousinesBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9488069622F5D7E2000A6D7D /* ChampagneLimousinesBold.ttf */; };
-		9488069B22F5D7E2000A6D7D /* ChampagneLimousines.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9488069722F5D7E2000A6D7D /* ChampagneLimousines.ttf */; };
 		9488069C22F5D7E2000A6D7D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9488069822F5D7E2000A6D7D /* Colors.xcassets */; };
 		9488069D22F5D7E2000A6D7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9488069922F5D7E2000A6D7D /* Images.xcassets */; };
 		9488069F22F5D7EA000A6D7D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9488069E22F5D7EA000A6D7D /* .swiftlint.yml */; };
@@ -63,8 +61,6 @@
 		9488067E22F5D760000A6D7D /* travellerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = travellerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9488068222F5D760000A6D7D /* travellerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = travellerUITests.swift; sourceTree = "<group>"; };
 		9488068422F5D760000A6D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9488069622F5D7E2000A6D7D /* ChampagneLimousinesBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ChampagneLimousinesBold.ttf; sourceTree = "<group>"; };
-		9488069722F5D7E2000A6D7D /* ChampagneLimousines.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ChampagneLimousines.ttf; sourceTree = "<group>"; };
 		9488069822F5D7E2000A6D7D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9488069922F5D7E2000A6D7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9488069E22F5D7EA000A6D7D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -168,8 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				9488069E22F5D7EA000A6D7D /* .swiftlint.yml */,
-				9488069722F5D7E2000A6D7D /* ChampagneLimousines.ttf */,
-				9488069622F5D7E2000A6D7D /* ChampagneLimousinesBold.ttf */,
 				9488069822F5D7E2000A6D7D /* Colors.xcassets */,
 				9488069922F5D7E2000A6D7D /* Images.xcassets */,
 				9488066222F5D75F000A6D7D /* AppDelegate.swift */,
@@ -320,12 +314,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9488069C22F5D7E2000A6D7D /* Colors.xcassets in Resources */,
-				9488069A22F5D7E2000A6D7D /* ChampagneLimousinesBold.ttf in Resources */,
 				9488066D22F5D760000A6D7D /* LaunchScreen.storyboard in Resources */,
 				9488069F22F5D7EA000A6D7D /* .swiftlint.yml in Resources */,
 				9488069D22F5D7E2000A6D7D /* Images.xcassets in Resources */,
 				9488066822F5D75F000A6D7D /* Main.storyboard in Resources */,
-				9488069B22F5D7E2000A6D7D /* ChampagneLimousines.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

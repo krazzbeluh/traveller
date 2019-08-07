@@ -18,8 +18,8 @@ import Foundation
 
 class Converter {
     weak var delegate: sendConverterDatasDelegate?
-    public static var changeRate: Float = 0.0
-    public static var changeRateDay = Date()
+    public var changeRate: Float = 0.0
+    public var changeRateDay = Date()
     
     enum ConvertError: Error {
         case notANumber
@@ -35,11 +35,11 @@ class Converter {
             throw ConvertError.notANumber
         }
         
-        let text = String(value * Converter.changeRate)
+        let text = String(value * changeRate)
         delegate?.displayDollar(with: text)
     }
     
-    func getChangeRateValue() {
+    func getChangeRateValue(callback: @escaping (() -> Void)) {
         ChangeRateService.shared.getChangeRate { result in
             
             switch result {
@@ -49,12 +49,13 @@ class Converter {
             case .failure(let error):
                 self.delegate?.sendAlert(with: error)
             }
+            callback()
         }
     }
     
     private func displayChangeRate(value changeRate: Float) {
-        Converter.changeRate = changeRate
-        Converter.changeRateDay = Date()
+        self.changeRate = changeRate
+        changeRateDay = Date()
         
         do {
             try convert("1")

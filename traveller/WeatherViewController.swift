@@ -19,6 +19,10 @@ class WeatherViewController: UIViewController, sendWeatherStationDatasDelegate {
         unitButton.contentHorizontalAlignment = .fill
         unitButton.contentVerticalAlignment = .fill
         unitButton.imageView?.contentMode = .scaleAspectFill
+        unitButton.layer.borderWidth = 10
+        unitButton.layer.cornerRadius = unitButton.frame.width / 2
+        unitButton.clipsToBounds = true
+        unitButton.layer.borderColor = UIColor(named: "Blue")?.cgColor
     }
     
     private let weatherStation = WeatherStation()

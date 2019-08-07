@@ -60,7 +60,6 @@ class WeatherStation {
                 
                 self.newYork.temperature = weatherData.list[0].main.temp
                 self.newYork.weather = weatherData.list[0].weather[0].weatherDescription
-//                self.newYork.weatherIcon = weatherData.list[0].weather[0].icon
                 let newYorkIconRequest = NetworkService(url: "http://openweathermap.org/img/wn/\(weatherData.list[0].weather[0].icon)@2x.png")
                 newYorkIconRequest.getData { result in
                     switch result {
@@ -75,7 +74,6 @@ class WeatherStation {
                 
                 self.paris.temperature = weatherData.list[1].main.temp
                 self.paris.weather = weatherData.list[1].weather[0].weatherDescription
-//                self.paris.weatherIcon = weatherData.list[1].weather[0].icon
                 let parisIconRequest = NetworkService(url: "http://openweathermap.org/img/wn/\(weatherData.list[1].weather[0].icon)@2x.png")
                 parisIconRequest.getData { result in
                     switch result {

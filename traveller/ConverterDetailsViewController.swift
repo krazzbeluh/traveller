@@ -11,12 +11,11 @@ import UIKit
 class ConverterDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        changeRateText.text = "1 € = \(Converter.changeRate) $"
-        dateText.text = "Taux au \(dateFormatter.string(from: Converter.changeRateDay)) :"
+        changeRateText.text = "1 € = \(converter.changeRate) $"
+        dateText.text = "Taux au \(dateFormatter.string(from: converter.changeRateDay)) :"
         switchActivityIndicator(shown: false)
     }
     
-//    var converter: Converter
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -25,6 +24,8 @@ class ConverterDetailViewController: UIViewController {
         
         return formatter
     }
+    
+    var converter: Converter!
     
     @IBOutlet weak var dateText: UILabel!
     @IBOutlet weak var changeRateText: UILabel!
@@ -36,8 +37,16 @@ class ConverterDetailViewController: UIViewController {
         refreshButton.isHidden = shown
     }
     
+    func displayChangeRate() {
+        changeRateText.text = "1 € = \(converter.changeRate) $"
+        dateText.text = "Taux au \(dateFormatter.string(from: converter.changeRateDay)) :"
+    }
+    
     @IBAction func reloadCurrency(_ sender: Any) {
-//        converter.getChangeRateValue()
+        converter.getChangeRateValue { () in
+            self.displayChangeRate()
+            self.switchActivityIndicator(shown: false)
+        }
         switchActivityIndicator(shown: true)
     }
 }
