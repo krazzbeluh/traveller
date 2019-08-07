@@ -10,7 +10,6 @@
 		9488066322F5D75F000A6D7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9488066222F5D75F000A6D7D /* AppDelegate.swift */; };
 		9488066822F5D75F000A6D7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9488066622F5D75F000A6D7D /* Main.storyboard */; };
 		9488066D22F5D760000A6D7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9488066B22F5D760000A6D7D /* LaunchScreen.storyboard */; };
-		9488068322F5D760000A6D7D /* travellerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9488068222F5D760000A6D7D /* travellerUITests.swift */; };
 		9488069C22F5D7E2000A6D7D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9488069822F5D7E2000A6D7D /* Colors.xcassets */; };
 		9488069D22F5D7E2000A6D7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9488069922F5D7E2000A6D7D /* Images.xcassets */; };
 		9488069F22F5D7EA000A6D7D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9488069E22F5D7EA000A6D7D /* .swiftlint.yml */; };
@@ -59,8 +58,6 @@
 		9488067322F5D760000A6D7D /* travellerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = travellerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9488067922F5D760000A6D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9488067E22F5D760000A6D7D /* travellerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = travellerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9488068222F5D760000A6D7D /* travellerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = travellerUITests.swift; sourceTree = "<group>"; };
-		9488068422F5D760000A6D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9488069822F5D7E2000A6D7D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9488069922F5D7E2000A6D7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9488069E22F5D7EA000A6D7D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -113,7 +110,6 @@
 			children = (
 				9488066122F5D75F000A6D7D /* traveller */,
 				9488067622F5D760000A6D7D /* travellerTests */,
-				9488068122F5D760000A6D7D /* travellerUITests */,
 				9488066022F5D75F000A6D7D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -149,15 +145,6 @@
 				9488067922F5D760000A6D7D /* Info.plist */,
 			);
 			path = travellerTests;
-			sourceTree = "<group>";
-		};
-		9488068122F5D760000A6D7D /* travellerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9488068222F5D760000A6D7D /* travellerUITests.swift */,
-				9488068422F5D760000A6D7D /* Info.plist */,
-			);
-			path = travellerUITests;
 			sourceTree = "<group>";
 		};
 		9488069022F5D76C000A6D7D /* Supporting Files */ = {
@@ -374,7 +361,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9488068322F5D760000A6D7D /* travellerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

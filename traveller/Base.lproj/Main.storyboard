@@ -419,16 +419,23 @@
                                             <action selector="refreshButton" destination="s3h-Ip-tYV" eventType="touchUpInside" id="Kz2-ZS-8OV"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="dLr-ho-3Y5">
+                                        <rect key="frame" x="368" y="52" width="30" height="30"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" name="Blue"/>
                                 <constraints>
                                     <constraint firstItem="yKe-0E-Pep" firstAttribute="centerX" secondItem="Okp-Nf-uUE" secondAttribute="centerX" id="A7H-TO-uyq"/>
+                                    <constraint firstItem="dLr-ho-3Y5" firstAttribute="centerY" secondItem="Q2d-FK-aTT" secondAttribute="centerY" id="BkY-4K-tJP"/>
                                     <constraint firstItem="gb5-EL-iSX" firstAttribute="leading" secondItem="Okp-Nf-uUE" secondAttribute="leading" constant="8" id="Cut-1s-XUS"/>
                                     <constraint firstItem="yKe-0E-Pep" firstAttribute="top" secondItem="gb5-EL-iSX" secondAttribute="bottom" constant="8" id="JBE-U2-zGW"/>
+                                    <constraint firstItem="dLr-ho-3Y5" firstAttribute="height" secondItem="Q2d-FK-aTT" secondAttribute="height" id="Qdf-km-HnU"/>
                                     <constraint firstItem="3u1-Bz-530" firstAttribute="centerX" secondItem="Okp-Nf-uUE" secondAttribute="centerX" id="Y9d-NY-b2x"/>
                                     <constraint firstItem="gb5-EL-iSX" firstAttribute="centerX" secondItem="Okp-Nf-uUE" secondAttribute="centerX" id="YHE-YJ-8Ua"/>
                                     <constraint firstItem="3u1-Bz-530" firstAttribute="leading" secondItem="Okp-Nf-uUE" secondAttribute="leading" constant="8" id="kHn-Rd-gyR"/>
                                     <constraint firstItem="3u1-Bz-530" firstAttribute="top" secondItem="yKe-0E-Pep" secondAttribute="bottom" constant="8" id="r6N-ST-0JA"/>
+                                    <constraint firstItem="dLr-ho-3Y5" firstAttribute="width" secondItem="Q2d-FK-aTT" secondAttribute="width" id="vyg-Oi-oXo"/>
+                                    <constraint firstItem="dLr-ho-3Y5" firstAttribute="centerX" secondItem="Q2d-FK-aTT" secondAttribute="centerX" id="x1e-cc-E3S"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebk-zE-ds1">
@@ -504,10 +511,12 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Météo" image="Weather" id="FGg-QS-5YV"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="dLr-ho-3Y5" id="Jyb-Ep-HxA"/>
                         <outlet property="newYorkIcon" destination="yVk-tO-mr3" id="atS-A5-Jni"/>
                         <outlet property="newYorkTemperature" destination="n7E-WH-dWe" id="jbh-Co-Hl6"/>
                         <outlet property="parisIcon" destination="yKe-0E-Pep" id="uDs-dj-cma"/>
                         <outlet property="parisTemperature" destination="3u1-Bz-530" id="Igc-0C-es4"/>
+                        <outlet property="reloadButton" destination="Q2d-FK-aTT" id="BPA-nO-545"/>
                         <outlet property="unitButton" destination="b58-UX-G4j" id="Xh0-tH-7dr"/>
                     </connections>
                 </viewController>
@@ -526,7 +535,7 @@
         <image name="Weather" width="20" height="20"/>
         <image name="translate" width="20" height="20"/>
         <namedColor name="Blue">
-            <color red="0.10199999809265137" green="0.67599999904632568" blue="0.88200002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10196078431372549" green="0.67450980392156867" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

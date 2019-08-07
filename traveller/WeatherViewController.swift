@@ -23,6 +23,10 @@ class WeatherViewController: UIViewController, sendWeatherStationDatasDelegate {
         unitButton.layer.cornerRadius = unitButton.frame.width / 2
         unitButton.clipsToBounds = true
         unitButton.layer.borderColor = UIColor(named: "Blue")?.cgColor
+        
+        reloadButton.contentHorizontalAlignment = .fill
+        reloadButton.contentVerticalAlignment = .fill
+        reloadButton.imageView?.contentMode = .scaleAspectFit
     }
     
     private let weatherStation = WeatherStation()
@@ -33,6 +37,8 @@ class WeatherViewController: UIViewController, sendWeatherStationDatasDelegate {
     @IBOutlet weak var newYorkTemperature: UILabel!
     @IBOutlet weak var newYorkIcon: UIImageView!
     @IBOutlet weak var unitButton: UIButton!
+    @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     func displayWeather(in city: City.CityName) {
         switch city {
@@ -58,6 +64,11 @@ class WeatherViewController: UIViewController, sendWeatherStationDatasDelegate {
             if let iconData = weatherStation.newYork.weatherIcon {
                 newYorkIcon.image = UIImage(data: iconData)
             }
+        }
+        
+        if weatherStation.iconResponses == 2 {
+            weatherStation.iconResponses = 0
+            switchActivityIndicator(shown: false)
         }
     }
     
@@ -85,7 +96,13 @@ class WeatherViewController: UIViewController, sendWeatherStationDatasDelegate {
         self.present(alertVC, animated: true, completion: nil)
     }
     
+    private func switchActivityIndicator(shown: Bool) {
+        activityIndicator.isHidden = !shown
+        reloadButton.isHidden = shown
+    }
+    
     @IBAction func refreshButton() {
+        switchActivityIndicator(shown: true)
         weatherStation.refreshWeather()
     }
     

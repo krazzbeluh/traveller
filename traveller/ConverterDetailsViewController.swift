@@ -14,6 +14,10 @@ class ConverterDetailViewController: UIViewController {
         changeRateText.text = "1 € = \(converter.changeRate) $"
         dateText.text = "Taux au \(dateFormatter.string(from: converter.changeRateDay)) :"
         switchActivityIndicator(shown: false)
+        
+        refreshButton.contentHorizontalAlignment = .fill
+        refreshButton.contentVerticalAlignment = .fill
+        refreshButton.imageView?.contentMode = .scaleAspectFit
     }
     
     var dateFormatter: DateFormatter {
@@ -32,7 +36,7 @@ class ConverterDetailViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var refreshButton: UIButton!
     
-    func switchActivityIndicator(shown: Bool) {
+    private func switchActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
         refreshButton.isHidden = shown
     }

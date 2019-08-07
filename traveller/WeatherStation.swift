@@ -44,6 +44,14 @@ class WeatherStation {
     
     public let paris = City(name: .paris)
     public let newYork = City(name: .newYork)
+    public var iconResponses = 0 {
+        didSet {
+            if self.iconResponses > 2 {
+                self.iconResponses = 0
+            }
+            print(self.iconResponses)
+        }
+    }
     
     private let weatherRequest = NetworkService(url: "http://api.openweathermap.org/data/2.5/group?id=5128581,2988507&lang=fr&units=metric&appid=cc7f297c71ae7bee297e310c4e0c96cc")
     
@@ -69,6 +77,7 @@ class WeatherStation {
                     case .failure(let error):
                         print(error)
                     }
+                    self.iconResponses += 1
                     self.delegate?.displayWeather(in: .newYork)
                 }
                 
@@ -83,6 +92,7 @@ class WeatherStation {
                     case .failure(let error):
                         print(error)
                     }
+                    self.iconResponses += 1
                     self.delegate?.displayWeather(in: .paris)
                 }
             }
