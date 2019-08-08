@@ -16,12 +16,13 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func testGetDataShouldPostFailedCallbackIfError() {
-        let rateService = NetworkService(networkSession: URLSessionFake(data: nil, response: nil, error: FakeRateData.error))
+        let rateService = NetworkService(networkSession:
+            URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
         
         let expectation = XCTestExpectation(description: "wait for queue change.")
         rateService.getData { result in
             switch result {
-            case .success(_):
+            case .success(_): //swiftlint:disable:this empty_enum_arguments
                 XCTAssert(false)
             case .failure(let error):
                 XCTAssert(error == .error)
@@ -33,12 +34,13 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func testGetDataShouldPostFailedCallbackIfnoData() {
-        let rateService = NetworkService(networkSession: URLSessionFake(data: nil, response: FakeRateData.responseOK, error: nil))
+        let rateService = NetworkService(networkSession:
+            URLSessionFake(data: nil, response: FakeResponseData.responseOK, error: nil))
         
         let expectation = XCTestExpectation(description: "wait for queue change.")
         rateService.getData { result in
             switch result {
-            case .success(_):
+            case .success(_): //swiftlint:disable:this empty_enum_arguments
                 XCTAssert(false)
             case .failure(let error):
                 XCTAssert(error == .noData)
@@ -50,12 +52,14 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func testGetDataShouldPostFailedCallbackIfIncorrectResponse() {
-        let rateService = NetworkService(networkSession: URLSessionFake(data: FakeRateData.rateCorrectData, response: FakeRateData.responseKO, error: nil))
+        let rateService = NetworkService(networkSession:
+            URLSessionFake(data: FakeResponseData.correctData(ressourceName: "Rate"),
+                           response: FakeResponseData.responseKO, error: nil))
         
         let expectation = XCTestExpectation(description: "wait for queue change.")
         rateService.getData { result in
             switch result {
-            case .success(_):
+            case .success(_): //swiftlint:disable:this empty_enum_arguments
                 XCTAssert(false)
             case .failure(let error):
                 XCTAssert(error == .responseNot200)
@@ -67,7 +71,8 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func testGetDataShouldPostSuccessCallbackIfNoError() {
-        let rateService = NetworkService(networkSession: URLSessionFake(data: FakeRateData.rateCorrectData, response: FakeRateData.responseOK, error: nil))
+        let rateService = NetworkService(networkSession: URLSessionFake(data:
+            FakeResponseData.correctData(ressourceName: "Rate"), response: FakeResponseData.responseOK, error: nil))
         
         let expectation = XCTestExpectation(description: "wait for queue change.")
         rateService.getData { result in
@@ -75,7 +80,7 @@ class NetworkServiceTests: XCTestCase {
             case .success(let data):
                 print(data)
                 XCTAssertNotNil(data)
-            case .failure(_):
+            case .failure(_): //swiftlint:disable:this empty_enum_arguments
                 XCTAssert(false)
             }
             expectation.fulfill()

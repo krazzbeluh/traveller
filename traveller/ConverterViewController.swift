@@ -19,7 +19,7 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         converter.delegate = self
-        converter.getChangeRateValue{ () in }
+        converter.getChangeRateValue { () in }
         
         convertButton.contentHorizontalAlignment = .fill
         convertButton.contentVerticalAlignment = .fill
@@ -69,7 +69,6 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
     @IBAction func infosButton() {
         performSegue(withIdentifier: "segueToConverterDetail", sender: self)
     }
-    
     
     private func convert() {
         do {

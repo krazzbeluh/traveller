@@ -15,7 +15,4 @@ class WeatherTests: XCTestCase {
     override func setUp() {
         weatherStation = WeatherStation()
     }
-    
-    
-
 }

@@ -8,8 +8,7 @@
 
 import Foundation
 
-class FakeRateData {
-    
+class FakeResponseData {
     class RateError: Error {}
     static let error = RateError()
     
@@ -21,13 +20,12 @@ class FakeRateData {
         url: URL(string: "https://google.com")!,
         statusCode: 500, httpVersion: nil, headerFields: nil)!
     
-    static var rateCorrectData: Data {
-        let bundle = Bundle(for: FakeRateData.self)
-        let url = bundle.url(forResource: "Rate", withExtension: "json")
+    static func correctData(ressourceName: String) -> Data {
+        let bundle = Bundle(for: FakeResponseData.self)
+        let url = bundle.url(forResource: ressourceName, withExtension: "json")
         let data = try! Data(contentsOf: url!)
         return data
     }
     
-    static let rateIncorrectData = "erreur".data(using: .utf8)!
+    static let incorrectData = "erreur".data(using: .utf8)!
 }
-

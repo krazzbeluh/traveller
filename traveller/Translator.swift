@@ -10,27 +10,51 @@ import Foundation
 
 protocol sendTranslatorDatasDelegate: class {
     var textInFrench: String {get}
-    func displayTranslation()
+}
+
+// MARK: - Welcome
+fileprivate struct GTranslateDecoder: Codable {
+    let data: DataClass
+}
+
+// MARK: - DataClass
+fileprivate struct DataClass: Codable {
+    let translations: [Translation]
+}
+
+// MARK: - Translation
+fileprivate struct Translation: Codable {
+    let translatedText: String
 }
 
 class Translator {
-    weak static var delegate: sendTranslatorDatasDelegate?
+    weak var delegate: sendTranslatorDatasDelegate?
     
-    public static var textToTranslate: String?
-    public static var translatedText: String? {
+    enum TranslationDataTaskError: Error {
+        case unableToDecodeData
+    }
+    
+    public var translationRequest: NetworkService?
+    
+    public var textToTranslate = "" {
         didSet {
-            self.delegate?.displayTranslation()
+            translationRequest = NetworkService(url: "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDya4uHyUQTvadV4wYczyzjYMUtrg-nSWo&source=fr&target=en&format=text&q=\(textToTranslate.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")") //swiftlint:disable:this line_length
         }
     }
     
-    public static func translate(_ text: String) {
-        textToTranslate = text
-        TranslationService().getTranslation { result in
+    public func translate(callback: @escaping(Result<String, Error>) -> Void) {
+        translationRequest?.getData { result in
             switch result {
-            case .success(let translation):
-                translatedText = translation
+            case .success(let data):
+                guard let translations = try? JSONDecoder().decode(GTranslateDecoder.self, from: data) else {
+                    callback(.failure(TranslationDataTaskError.unableToDecodeData))
+                    print("Error: Couldn't decode data into rates")
+                    return
+                }
+                
+                callback(.success(translations.data.translations[0].translatedText))
             case .failure(let error):
-                print(error)
+                callback(.failure(error))
             }
         }
     }

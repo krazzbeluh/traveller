@@ -13,7 +13,7 @@ class TranslatorViewController: UIViewController, sendTranslatorDatasDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Translator.delegate = self
+        translator.delegate = self
         
         translateButton.contentHorizontalAlignment = .fill
         translateButton.contentVerticalAlignment = .fill
@@ -24,6 +24,7 @@ class TranslatorViewController: UIViewController, sendTranslatorDatasDelegate {
         translateButton.layer.borderColor = UIColor(named: "Blue")?.cgColor
     }
     
+    let translator = Translator()
     var textInFrench: String {
         return textToTranslate.text
     }
@@ -32,16 +33,37 @@ class TranslatorViewController: UIViewController, sendTranslatorDatasDelegate {
     @IBOutlet weak var translatedText: UILabel!
     @IBOutlet weak var translateButton: UIButton!
     
+    private func sendAlert(message: String) {
+        let alertVC = UIAlertController(title: "error", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
     func hideKeyboard() {
         textToTranslate.resignFirstResponder()
     }
     
-    func displayTranslation() {
-        translatedText.text = Translator.translatedText
+    func displayTranslation(_ translation: String) {
+        translatedText.text = translation
+    }
+    
+    func displayError(with type: Error) {
+        switch type {
+        default:
+            sendAlert(message: "Erreur inconnue")
+        }
     }
     
     @IBAction func translateText(_ sender: Any) {
-        Translator.translate(textToTranslate.text!)
+        translator.textToTranslate = textToTranslate.text!
+        translator.translate { result in
+            switch result {
+            case .success(let translation):
+                self.displayTranslation(translation)
+            case .failure(let error):
+                self.displayError(with: error)
+            }
+        }
     }
     
     @IBAction func dismissKeyboard(_ sender: Any) {

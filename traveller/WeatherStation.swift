@@ -52,7 +52,7 @@ class WeatherStation {
         }
     }
     
-    private let weatherRequest = NetworkService(url: "http://api.openweathermap.org/data/2.5/group?id=5128581,2988507&lang=fr&units=metric&appid=cc7f297c71ae7bee297e310c4e0c96cc")
+    private let weatherRequest = NetworkService(url: "http://api.openweathermap.org/data/2.5/group?id=5128581,2988507&lang=fr&units=metric&appid=cc7f297c71ae7bee297e310c4e0c96cc") //swiftlint:disable:this line_length
     
     public func refreshWeather() {
         weatherRequest.getData { result in
@@ -67,7 +67,8 @@ class WeatherStation {
                 
                 self.newYork.temperature = weatherData.list[0].main.temp
                 self.newYork.weather = weatherData.list[0].weather[0].weatherDescription
-                let newYorkIconRequest = NetworkService(url: "http://openweathermap.org/img/wn/\(weatherData.list[0].weather[0].icon)@2x.png")
+                let newYorkIconRequest = NetworkService(url:
+                    "http://openweathermap.org/img/wn/\(weatherData.list[0].weather[0].icon)@2x.png")
                 newYorkIconRequest.getData { result in
                     switch result {
                     case .success(let data):
@@ -82,7 +83,8 @@ class WeatherStation {
                 
                 self.paris.temperature = weatherData.list[1].main.temp
                 self.paris.weather = weatherData.list[1].weather[0].weatherDescription
-                let parisIconRequest = NetworkService(url: "http://openweathermap.org/img/wn/\(weatherData.list[1].weather[0].icon)@2x.png")
+                let parisIconRequest = NetworkService(url:
+                    "http://openweathermap.org/img/wn/\(weatherData.list[1].weather[0].icon)@2x.png")
                 parisIconRequest.getData { result in
                     switch result {
                     case .success(let data):

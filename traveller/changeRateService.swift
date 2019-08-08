@@ -18,7 +18,8 @@ class ChangeRateService {
         case unableToDecodeData, APINoSuccess, noChangeRateInData
     }
     
-    private let changeRateRequest = NetworkService(url: "http://data.fixer.io/api/latest?access_key=12db1bc4d9a970af827f07b4c5ad8b03&format=1&base=EUR&symbols=USD")
+    private let changeRateRequest = NetworkService(url:
+        "http://data.fixer.io/api/latest?access_key=12db1bc4d9a970af827f07b4c5ad8b03&format=1&base=EUR&symbols=USD")
     
     public func getChangeRate(callback: @escaping(Result<Float, Error>) -> Void) {
         changeRateRequest.getData { result in
