@@ -16,7 +16,7 @@ class TranslatorTests: XCTestCase {
         translator = Translator()
     }
     
-    func testTranslatedTextIsHelloWhenCallingTranslateBonjour() {
+    func testTranslatedTextShouldReturn() {
         translator.translationRequest = NetworkService(networkSession:
             URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
         
@@ -24,17 +24,105 @@ class TranslatorTests: XCTestCase {
         
         translator.translate { result in
             switch result {
-            case .success(let translation):
-                XCTAssertEqual(translation, "Bonjour")
+            case .success(_): //swiftlint:disable:this empty_enum_arguments
+                XCTAssert(false)
             case .failure(let error):
-                switch error {
-                case NetworkService.NetworkError.error:
+                if case NetworkService.NetworkError.error = error {
                     XCTAssert(true)
-                default:
+                } else {
                     XCTAssert(false)
                 }
-                
-//                XCTAssert(error == NetworkService.NetworkError.error)
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetDataShouldPostFailedCallbackIfnoData() {
+        translator.translationRequest = NetworkService(networkSession:
+            URLSessionFake(data: nil, response: FakeResponseData.responseOK, error: nil))
+        
+        let expectation = XCTestExpectation(description: "wait for queue change.")
+        
+        translator.translate { result in
+            switch result {
+            case .success(_): //swiftlint:disable:this empty_enum_arguments
+                XCTAssert(false)
+            case .failure(let error):
+                if case NetworkService.NetworkError.noData = error {
+                    XCTAssert(true)
+                } else {
+                    XCTAssert(false)
+                }
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetDataShouldPostFailedCallbackIfIncorrectResponse() {
+        translator.translationRequest = NetworkService(networkSession:
+            URLSessionFake(data: nil, response: FakeResponseData.responseKO, error: nil))
+        
+        let expectation = XCTestExpectation(description: "wait for queue change.")
+        
+        translator.translate { result in
+            switch result {
+            case .success(_): //swiftlint:disable:this empty_enum_arguments
+                XCTAssert(false)
+            case .failure(let error):
+                if case NetworkService.NetworkError.responseNot200 = error {
+                    XCTAssert(true)
+                } else {
+                    XCTAssert(false)
+                }
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetDataShouldPostSuccessCallbackIfNoError() {
+        translator.translationRequest = NetworkService(networkSession:
+            URLSessionFake(data: FakeResponseData.correctData(ressourceName: "Translation"),
+                           response: FakeResponseData.responseOK, error: nil))
+        
+        let expectation = XCTestExpectation(description: "wait for queue change.")
+        
+        translator.translate { result in
+            switch result {
+            case .success(let translation):
+                XCTAssertEqual(translation, "Hello")
+            case .failure(_): //swiftlint:disable:this empty_enum_arguments
+                    XCTAssert(false)
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetDataShouldPostSuccessCallbackIfIncorrectData() {
+        translator.textToTranslate = ""
+        translator.translationRequest = NetworkService(networkSession:
+            URLSessionFake(data: FakeResponseData.correctData(ressourceName: "Rate"),
+                           response: FakeResponseData.responseOK, error: nil))
+        
+        let expectation = XCTestExpectation(description: "wait for queue change.")
+        
+        translator.translate { result in
+            switch result {
+            case .success(_): //swiftlint:disable:this empty_enum_arguments
+                XCTAssert(false)
+            case .failure(let error):
+                if case Translator.TranslationDataTaskError.unableToDecodeData = error {
+                    XCTAssert(true)
+                } else {
+                    XCTAssert(false)
+                }
             }
             expectation.fulfill()
         }
