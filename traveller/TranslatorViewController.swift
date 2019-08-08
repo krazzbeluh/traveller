@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TranslatorViewController: UIViewController, sendTranslatorDatasDelegate {
+class TranslatorViewController: UIViewController, SharedController, sendTranslatorDatasDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,25 +33,12 @@ class TranslatorViewController: UIViewController, sendTranslatorDatasDelegate {
     @IBOutlet weak var translatedText: UILabel!
     @IBOutlet weak var translateButton: UIButton!
     
-    private func sendAlert(message: String) {
-        let alertVC = UIAlertController(title: "error", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
-    }
-    
     func hideKeyboard() {
         textToTranslate.resignFirstResponder()
     }
     
     func displayTranslation(_ translation: String) {
         translatedText.text = translation
-    }
-    
-    func displayError(with type: Error) {
-        switch type {
-        default:
-            sendAlert(message: "Erreur inconnue")
-        }
     }
     
     @IBAction func translateText(_ sender: Any) {
@@ -61,7 +48,7 @@ class TranslatorViewController: UIViewController, sendTranslatorDatasDelegate {
             case .success(let translation):
                 self.displayTranslation(translation)
             case .failure(let error):
-                self.displayError(with: error)
+                self.sendAlert(with: error)
             }
         }
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol sendTranslatorDatasDelegate: class {
+protocol sendTranslatorDatasDelegate: SharedController {
     var textInFrench: String {get}
 }
 

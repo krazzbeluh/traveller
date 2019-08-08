@@ -8,17 +8,20 @@
 
 // refreshing resets convertion
 
-protocol sendConverterDatasDelegate: class {
+protocol sendConverterDatasDelegate: SharedController {
     func displayDollar()
     func displayChangeRate()
-    func sendAlert(with type: Error)
 }
 
 import Foundation
 
 class Converter {
     weak var delegate: sendConverterDatasDelegate?
-    public var changeRate: Float = 0.0
+    public var changeRate: Float = 0.0 {
+        didSet {
+            displayChangeRate(value: self.changeRate)
+        }
+    }
     public var changeRateDay = Date()
     
     public var moneyInDollar: Float? {
@@ -39,17 +42,15 @@ class Converter {
         moneyInDollar = value * changeRate
     }
     
-    public func getChangeRateValue(callback: @escaping (() -> Void)) {
+    public func getChangeRateValue(callback: @escaping (Result<Void, Error>) -> Void) {
         ChangeRateService().getChangeRate { result in
-            
             switch result {
             case .success(let changeRate):
-                print("changerate is \(changeRate) today")
-                self.displayChangeRate(value: changeRate)
+                self.changeRate = changeRate
+                callback(.success(()))
             case .failure(let error):
-                self.delegate?.sendAlert(with: error)
+                callback(.failure(error))
             }
-            callback()
         }
     }
     
@@ -60,7 +61,7 @@ class Converter {
         do {
             try convert("1")
         } catch let error as ConvertError {
-            print(error)
+            delegate?.sendAlert(with: error)
         } catch {
             fatalError("Oops ! Something went wrong !")
         }

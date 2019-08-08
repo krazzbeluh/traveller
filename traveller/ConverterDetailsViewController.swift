@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConverterDetailViewController: UIViewController {
+class ConverterDetailViewController: UIViewController, SharedController {
     override func viewDidLoad() {
         super.viewDidLoad()
         changeRateText.text = "1 € = \(converter.changeRate) $"
@@ -47,7 +47,12 @@ class ConverterDetailViewController: UIViewController {
     }
     
     @IBAction func reloadCurrency(_ sender: Any) {
-        converter.getChangeRateValue { () in
+        converter.getChangeRateValue { result in
+            switch result {
+            case .success(_): break
+            case .failure(let error):
+                self.sendAlert(with: error)
+            }
             self.displayChangeRate()
             self.switchActivityIndicator(shown: false)
         }

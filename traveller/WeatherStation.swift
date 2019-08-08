@@ -8,9 +8,8 @@
 
 import Foundation
 
-protocol sendWeatherStationDatasDelegate: class {
+protocol sendWeatherStationDatasDelegate: SharedController {
     func displayWeather(in city: City.CityName)
-    func sendAlert(with type: NetworkService.NetworkError)
 }
 
 // MARK: - Weather
@@ -58,7 +57,7 @@ class WeatherStation {
         weatherRequest.getData { result in
             switch result {
             case .failure(let error):
-                print(error)
+                self.delegate?.sendAlert(with: error)
             case .success(let data):
                 guard let weatherData = try? JSONDecoder().decode(WeatherData.self, from: data) else {
                     print("Unable to decode data")
@@ -75,7 +74,7 @@ class WeatherStation {
                         self.newYork.weatherIcon = data
                         print(data)
                     case .failure(let error):
-                        print(error)
+                        self.delegate?.sendAlert(with: error)
                     }
                     self.iconResponses += 1
                     self.delegate?.displayWeather(in: .newYork)
@@ -91,7 +90,7 @@ class WeatherStation {
                         self.paris.weatherIcon = data
                         print(data)
                     case .failure(let error):
-                        print(error)
+                        self.delegate?.sendAlert(with: error)
                     }
                     self.iconResponses += 1
                     self.delegate?.displayWeather(in: .paris)

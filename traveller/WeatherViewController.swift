@@ -8,8 +8,7 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, sendWeatherStationDatasDelegate {
-    
+class WeatherViewController: UIViewController, SharedController, sendWeatherStationDatasDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,30 +71,6 @@ class WeatherViewController: UIViewController, sendWeatherStationDatasDelegate {
             weatherStation.iconResponses = 0
             switchActivityIndicator(shown: false)
         }
-    }
-    
-    func sendAlert(with type: NetworkService.NetworkError) {
-        let message: String
-        switch type {
-        case .noData:
-            message = "Impossible de mettre à jour la météo"
-        case .error:
-            message = "Une erreur est survenue lors de la mise à jour de la météo"
-        case .responseNot200:
-            message = "Une erreur est survenue lors de la mise à jour de la météo"
-        /*case .unableToDecodeData:
-            message = "Impossible de mettre à jour le taux de change"
-        case .APINoSuccess:
-            message = "Une erreur est survenue lors de la mise à jour de la météo"*/
-        }
-        print(type)
-        sendAlert(message: message)
-    }
-    
-    private func sendAlert(message: String) {
-        let alertVC = UIAlertController(title: "error", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
     }
     
     private func switchActivityIndicator(shown: Bool) {

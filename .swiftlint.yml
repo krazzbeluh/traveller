@@ -3,6 +3,7 @@ disabled_rules:
 - force_cast
 - private_over_fileprivate
 - force_try
+- empty_enum_arguments
 identifier_name:
 min_length: # only min_length
 error: 3 # only error

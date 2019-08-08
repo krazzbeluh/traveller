@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConverterViewController: UIViewController, sendConverterDatasDelegate {
+class ConverterViewController: UIViewController, SharedController, sendConverterDatasDelegate {
     
     private let converter = Converter()
     @IBOutlet weak var moneyInEuro: UITextField!
@@ -19,7 +19,7 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         converter.delegate = self
-        converter.getChangeRateValue { () in }
+        converter.getChangeRateValue { _ in }
         
         convertButton.contentHorizontalAlignment = .fill
         convertButton.contentVerticalAlignment = .fill
@@ -74,7 +74,7 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
         do {
             try converter.convert(moneyInEuro.text)
         } catch let error as Converter.ConvertError {
-            print(error)
+            sendAlert(with: error)
         } catch {
             fatalError("Oops ! Something went wrong !")
         }
@@ -82,32 +82,5 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
     
     func displayChangeRate() {
         convert()
-    }
-    
-    func sendAlert(with type: Error) {
-        let message: String
-        switch type {
-        case NetworkService.NetworkError.noData:
-            message = "Impossible de mettre à jour le taux de change"
-        case NetworkService.NetworkError.error:
-            message = "Une erreur est survenue lors de la mise à jour du taux de change"
-        case NetworkService.NetworkError.responseNot200:
-            message = "Une erreur est survenue lors de la mise à jour du taux de change"
-        case ChangeRateService.ChangeRateDataTaskError.unableToDecodeData:
-            message = "Impossible de mettre à jour le taux de change"
-        case ChangeRateService.ChangeRateDataTaskError.APINoSuccess:
-            message = "Une erreur est survenue lors de la mise à jour du taux de change"
-        case ChangeRateService.ChangeRateDataTaskError.noChangeRateInData:
-            message = "Impossible de mettre à jour le taux de change"
-        default:
-            message = "Erreur: Inconnue"
-        }
-        sendAlert(message: message)
-    }
-    
-    private func sendAlert(message: String) {
-        let alertVC = UIAlertController(title: "error", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
     }
 }
