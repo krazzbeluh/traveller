@@ -10,22 +10,25 @@ import Foundation
 
 protocol sendTranslatorDatasDelegate: class {
     var textInFrench: String {get}
-    func displayTranslation(with text: String)
+    func displayTranslation()
 }
 
 class Translator {
     weak static var delegate: sendTranslatorDatasDelegate?
     
-    public static var textToTranslate: String {
-        return delegate?.textInFrench.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+    public static var textToTranslate: String?
+    public static var translatedText: String? {
+        didSet {
+            self.delegate?.displayTranslation()
+        }
     }
     
-    static func translate(_ text: String) {
+    public static func translate(_ text: String) {
+        textToTranslate = text
         TranslationService().getTranslation { result in
             switch result {
             case .success(let translation):
-                self.delegate?.displayTranslation(with: translation)
-                print(translation)
+                translatedText = translation
             case .failure(let error):
                 print(error)
             }

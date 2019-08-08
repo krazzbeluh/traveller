@@ -9,7 +9,7 @@
 // refreshing resets convertion
 
 protocol sendConverterDatasDelegate: class {
-    func displayDollar(with: String)
+    func displayDollar()
     func displayChangeRate()
     func sendAlert(with type: Error)
 }
@@ -21,25 +21,25 @@ class Converter {
     public var changeRate: Float = 0.0
     public var changeRateDay = Date()
     
-    enum ConvertError: Error {
+    public var moneyInDollar: Float? {
+        didSet {
+            delegate?.displayDollar()
+        }
+    }
+    
+    public enum ConvertError: Error {
         case notANumber
     }
     
-    func convert(_ numberText: String?) throws {
-        
-        guard let number = numberText else {
+    public func convert(_ numberText: String?) throws {
+        guard let value = Float(numberText!) else {
             throw ConvertError.notANumber
         }
         
-        guard let value = Float(number) else {
-            throw ConvertError.notANumber
-        }
-        
-        let text = String(value * changeRate)
-        delegate?.displayDollar(with: text)
+        moneyInDollar = value * changeRate
     }
     
-    func getChangeRateValue(callback: @escaping (() -> Void)) {
+    public func getChangeRateValue(callback: @escaping (() -> Void)) {
         ChangeRateService().getChangeRate { result in
             
             switch result {

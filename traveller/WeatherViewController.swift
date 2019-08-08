@@ -27,6 +27,8 @@ class WeatherViewController: UIViewController, sendWeatherStationDatasDelegate {
         reloadButton.contentHorizontalAlignment = .fill
         reloadButton.contentVerticalAlignment = .fill
         reloadButton.imageView?.contentMode = .scaleAspectFit
+        
+        switchActivityIndicator(shown: true)
     }
     
     private let weatherStation = WeatherStation()

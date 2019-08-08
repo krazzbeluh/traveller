@@ -28,7 +28,7 @@ class TranslationService {
         case unableToDecodeData
     }
     
-    private let translationRequest = NetworkService(url: "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDya4uHyUQTvadV4wYczyzjYMUtrg-nSWo&source=fr&target=en&format=text&q=\(Translator.textToTranslate)")
+    private let translationRequest = NetworkService(url: "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDya4uHyUQTvadV4wYczyzjYMUtrg-nSWo&source=fr&target=en&format=text&q=\(Translator.textToTranslate!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")")
     
     public func getTranslation(callback: @escaping(Result<String, Error>) -> Void) {
         translationRequest.getData{ result in

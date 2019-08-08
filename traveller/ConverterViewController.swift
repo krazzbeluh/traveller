@@ -6,8 +6,6 @@
 //  Copyright © 2019 Paul Leclerc. All rights reserved.
 //
 
-// Design : https://dribbble.com/shots/4816296-Stylish-Currency-Converter-iOS-app
-
 import UIKit
 
 class ConverterViewController: UIViewController, sendConverterDatasDelegate {
@@ -15,9 +13,6 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
     private let converter = Converter()
     @IBOutlet weak var moneyInEuro: UITextField!
     @IBOutlet weak var result: UILabel!
-    @IBOutlet weak var dateText: UILabel!
-    @IBOutlet weak var changeRateText: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var convertButton: UIButton!
     
@@ -49,12 +44,11 @@ class ConverterViewController: UIViewController, sendConverterDatasDelegate {
         if segue.identifier == "segueToConverterDetail" {
             let successVC = segue.destination as! ConverterDetailViewController
             successVC.converter = converter
-            print(1)
         }
     }
 
-    func displayDollar(with value: String) {
-        result.text = value
+    func displayDollar() {
+        result.text = String(converter.moneyInDollar!)
     }
     
     private func hideKeyboard() {

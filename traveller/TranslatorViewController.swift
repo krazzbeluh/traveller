@@ -36,8 +36,8 @@ class TranslatorViewController: UIViewController, sendTranslatorDatasDelegate {
         textToTranslate.resignFirstResponder()
     }
     
-    func displayTranslation(with text: String) {
-        translatedText.text = text
+    func displayTranslation() {
+        translatedText.text = Translator.translatedText
     }
     
     @IBAction func translateText(_ sender: Any) {

@@ -20,27 +20,22 @@
 		948806AC22F5D812000A6D7D /* changeRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806A422F5D812000A6D7D /* changeRateService.swift */; };
 		948806AD22F5D812000A6D7D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806A522F5D812000A6D7D /* City.swift */; };
 		948806AE22F5D812000A6D7D /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806A622F5D812000A6D7D /* Converter.swift */; };
-		948806AF22F5D812000A6D7D /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806A722F5D812000A6D7D /* WeatherService.swift */; };
 		948806B322F5D823000A6D7D /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806B022F5D823000A6D7D /* ConverterViewController.swift */; };
 		948806B422F5D823000A6D7D /* TranslatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806B122F5D823000A6D7D /* TranslatorViewController.swift */; };
 		948806B522F5D823000A6D7D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806B222F5D823000A6D7D /* WeatherViewController.swift */; };
 		948806B922F88BAD000A6D7D /* ConverterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806B822F88BAD000A6D7D /* ConverterDetailsViewController.swift */; };
 		948806BB22F9AC69000A6D7D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948806BA22F9AC69000A6D7D /* NetworkService.swift */; };
-		948C018B22F9C7BC00451E2A /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948C018A22F9C7BC00451E2A /* ConverterTests.swift */; };
+		948C018B22F9C7BC00451E2A /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948C018A22F9C7BC00451E2A /* NetworkServiceTests.swift */; };
 		948C018F22F9CF2700451E2A /* FakeRateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948C018E22F9CF2700451E2A /* FakeRateData.swift */; };
 		948C019122F9D35600451E2A /* Rate.json in Resources */ = {isa = PBXBuildFile; fileRef = 948C019022F9D35600451E2A /* Rate.json */; };
 		948C019422F9D64600451E2A /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948C019222F9D64200451E2A /* URLSessionFake.swift */; };
+		9498EB8622FB6CB500A74E54 /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498EB8522FB6CB500A74E54 /* ConverterTests.swift */; };
+		9498EB8822FB759A00A74E54 /* TranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498EB8722FB759A00A74E54 /* TranslatorTests.swift */; };
+		9498EB8A22FB78BD00A74E54 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498EB8922FB78BD00A74E54 /* WeatherTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		9488067422F5D760000A6D7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9488065722F5D75F000A6D7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9488065E22F5D75F000A6D7D;
-			remoteInfo = traveller;
-		};
-		9488067F22F5D760000A6D7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9488065722F5D75F000A6D7D /* Project object */;
 			proxyType = 1;
@@ -57,7 +52,6 @@
 		9488066E22F5D760000A6D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9488067322F5D760000A6D7D /* travellerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = travellerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9488067922F5D760000A6D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9488067E22F5D760000A6D7D /* travellerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = travellerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9488069822F5D7E2000A6D7D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9488069922F5D7E2000A6D7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9488069E22F5D7EA000A6D7D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -68,16 +62,18 @@
 		948806A422F5D812000A6D7D /* changeRateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = changeRateService.swift; sourceTree = "<group>"; };
 		948806A522F5D812000A6D7D /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		948806A622F5D812000A6D7D /* Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
-		948806A722F5D812000A6D7D /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		948806B022F5D823000A6D7D /* ConverterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
 		948806B122F5D823000A6D7D /* TranslatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatorViewController.swift; sourceTree = "<group>"; };
 		948806B222F5D823000A6D7D /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		948806B822F88BAD000A6D7D /* ConverterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterDetailsViewController.swift; sourceTree = "<group>"; };
 		948806BA22F9AC69000A6D7D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		948C018A22F9C7BC00451E2A /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
+		948C018A22F9C7BC00451E2A /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		948C018E22F9CF2700451E2A /* FakeRateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRateData.swift; sourceTree = "<group>"; };
 		948C019022F9D35600451E2A /* Rate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Rate.json; sourceTree = "<group>"; };
 		948C019222F9D64200451E2A /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
+		9498EB8522FB6CB500A74E54 /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
+		9498EB8722FB759A00A74E54 /* TranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorTests.swift; sourceTree = "<group>"; };
+		9498EB8922FB78BD00A74E54 /* WeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,13 +85,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		9488067022F5D760000A6D7D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9488067B22F5D760000A6D7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -119,7 +108,6 @@
 			children = (
 				9488065F22F5D75F000A6D7D /* traveller.app */,
 				9488067322F5D760000A6D7D /* travellerTests.xctest */,
-				9488067E22F5D760000A6D7D /* travellerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,10 +126,13 @@
 		9488067622F5D760000A6D7D /* travellerTests */ = {
 			isa = PBXGroup;
 			children = (
+				9498EB8522FB6CB500A74E54 /* ConverterTests.swift */,
+				9498EB8722FB759A00A74E54 /* TranslatorTests.swift */,
+				9498EB8922FB78BD00A74E54 /* WeatherTests.swift */,
 				948C019222F9D64200451E2A /* URLSessionFake.swift */,
 				948C019022F9D35600451E2A /* Rate.json */,
 				948C018E22F9CF2700451E2A /* FakeRateData.swift */,
-				948C018A22F9C7BC00451E2A /* ConverterTests.swift */,
+				948C018A22F9C7BC00451E2A /* NetworkServiceTests.swift */,
 				9488067922F5D760000A6D7D /* Info.plist */,
 			);
 			path = travellerTests;
@@ -169,7 +160,6 @@
 				948806A222F5D812000A6D7D /* TranslationService.swift */,
 				948806A022F5D812000A6D7D /* WeatherStation.swift */,
 				948806A522F5D812000A6D7D /* City.swift */,
-				948806A722F5D812000A6D7D /* WeatherService.swift */,
 				948806A322F5D812000A6D7D /* WeatherIconService.swift */,
 				948806BA22F9AC69000A6D7D /* NetworkService.swift */,
 			);
@@ -233,24 +223,6 @@
 			productReference = 9488067322F5D760000A6D7D /* travellerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9488067D22F5D760000A6D7D /* travellerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9488068D22F5D760000A6D7D /* Build configuration list for PBXNativeTarget "travellerUITests" */;
-			buildPhases = (
-				9488067A22F5D760000A6D7D /* Sources */,
-				9488067B22F5D760000A6D7D /* Frameworks */,
-				9488067C22F5D760000A6D7D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9488068022F5D760000A6D7D /* PBXTargetDependency */,
-			);
-			name = travellerUITests;
-			productName = travellerUITests;
-			productReference = 9488067E22F5D760000A6D7D /* travellerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -267,10 +239,6 @@
 					9488067222F5D760000A6D7D = {
 						CreatedOnToolsVersion = 10.3;
 						LastSwiftMigration = 1030;
-						TestTargetID = 9488065E22F5D75F000A6D7D;
-					};
-					9488067D22F5D760000A6D7D = {
-						CreatedOnToolsVersion = 10.3;
 						TestTargetID = 9488065E22F5D75F000A6D7D;
 					};
 				};
@@ -290,7 +258,6 @@
 			targets = (
 				9488065E22F5D75F000A6D7D /* traveller */,
 				9488067222F5D760000A6D7D /* travellerTests */,
-				9488067D22F5D760000A6D7D /* travellerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -316,13 +283,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9488067C22F5D760000A6D7D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -330,7 +290,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				948806AF22F5D812000A6D7D /* WeatherService.swift in Sources */,
 				948806AC22F5D812000A6D7D /* changeRateService.swift in Sources */,
 				948806B422F5D823000A6D7D /* TranslatorViewController.swift in Sources */,
 				948806B522F5D823000A6D7D /* WeatherViewController.swift in Sources */,
@@ -353,14 +312,10 @@
 			files = (
 				948C018F22F9CF2700451E2A /* FakeRateData.swift in Sources */,
 				948C019422F9D64600451E2A /* URLSessionFake.swift in Sources */,
-				948C018B22F9C7BC00451E2A /* ConverterTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9488067A22F5D760000A6D7D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				9498EB8A22FB78BD00A74E54 /* WeatherTests.swift in Sources */,
+				9498EB8822FB759A00A74E54 /* TranslatorTests.swift in Sources */,
+				9498EB8622FB6CB500A74E54 /* ConverterTests.swift in Sources */,
+				948C018B22F9C7BC00451E2A /* NetworkServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,11 +326,6 @@
 			isa = PBXTargetDependency;
 			target = 9488065E22F5D75F000A6D7D /* traveller */;
 			targetProxy = 9488067422F5D760000A6D7D /* PBXContainerItemProxy */;
-		};
-		9488068022F5D760000A6D7D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9488065E22F5D75F000A6D7D /* traveller */;
-			targetProxy = 9488067F22F5D760000A6D7D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -596,46 +546,6 @@
 			};
 			name = Release;
 		};
-		9488068E22F5D760000A6D7D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QW59HMZCU4;
-				INFOPLIST_FILE = travellerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulleclerc.travellerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = traveller;
-			};
-			name = Debug;
-		};
-		9488068F22F5D760000A6D7D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QW59HMZCU4;
-				INFOPLIST_FILE = travellerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulleclerc.travellerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = traveller;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -662,15 +572,6 @@
 			buildConfigurations = (
 				9488068B22F5D760000A6D7D /* Debug */,
 				9488068C22F5D760000A6D7D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9488068D22F5D760000A6D7D /* Build configuration list for PBXNativeTarget "travellerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9488068E22F5D760000A6D7D /* Debug */,
-				9488068F22F5D760000A6D7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
