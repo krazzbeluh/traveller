@@ -16,7 +16,7 @@ class TranslatorTests: XCTestCase {
         translator = Translator()
     }
     
-    func testTranslatedTextShouldReturn() {
+    func testGetTranslationShouldReturnFailedCallbackIfError() {
         translator.translationRequest = NetworkService(networkSession:
             URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
         
@@ -39,7 +39,7 @@ class TranslatorTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetDataShouldPostFailedCallbackIfnoData() {
+    func testGetTranslationShouldReturnFailedCallbackIfnoData() {
         translator.translationRequest = NetworkService(networkSession:
             URLSessionFake(data: nil, response: FakeResponseData.responseOK, error: nil))
         
@@ -62,7 +62,7 @@ class TranslatorTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetDataShouldPostFailedCallbackIfIncorrectResponse() {
+    func testGetTranslationShouldReturnFailedCallbackIfIncorrectResponse() {
         translator.translationRequest = NetworkService(networkSession:
             URLSessionFake(data: nil, response: FakeResponseData.responseKO, error: nil))
         
@@ -85,7 +85,7 @@ class TranslatorTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetDataShouldPostSuccessCallbackIfNoError() {
+    func testGetTranslationShouldReturnSuccessCallbackIfNoError() {
         translator.translationRequest = NetworkService(networkSession:
             URLSessionFake(data: FakeResponseData.correctData(ressourceName: "Translation"),
                            response: FakeResponseData.responseOK, error: nil))
@@ -105,7 +105,7 @@ class TranslatorTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetDataShouldPostSuccessCallbackIfIncorrectData() {
+    func testGetTranslationShouldReturnFailedCallbackIfIncorrectData() {
         translator.textToTranslate = ""
         translator.translationRequest = NetworkService(networkSession:
             URLSessionFake(data: FakeResponseData.correctData(ressourceName: "Rate"),

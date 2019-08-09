@@ -12,21 +12,6 @@ protocol sendTranslatorDatasDelegate: SharedController {
     var textInFrench: String {get}
 }
 
-// MARK: - Welcome
-fileprivate struct GTranslateDecoder: Codable {
-    let data: DataClass
-}
-
-// MARK: - DataClass
-fileprivate struct DataClass: Codable {
-    let translations: [Translation]
-}
-
-// MARK: - Translation
-fileprivate struct Translation: Codable {
-    let translatedText: String
-}
-
 class Translator {
     weak var delegate: sendTranslatorDatasDelegate?
     
@@ -46,7 +31,8 @@ class Translator {
         translationRequest?.getData { result in
             switch result {
             case .success(let data):
-                guard let translations = try? JSONDecoder().decode(GTranslateDecoder.self, from: data) else {
+                guard let translations = try? JSONDecoder()
+                    .decode(DataDecoder.GTranslateDecoder.self, from: data) else {
                     callback(.failure(TranslationDataTaskError.unableToDecodeData))
                     print("Error: Couldn't decode data into rates")
                     return

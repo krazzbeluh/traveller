@@ -12,89 +12,53 @@ protocol sendWeatherStationDatasDelegate: SharedController {
     func displayWeather(in city: City.CityName)
 }
 
-// MARK: - Weather
-struct WeatherData: Decodable {
-    let list: [List]
-}
-
-// MARK: - List
-struct List: Decodable {
-    let weather: [Weather]
-    let main: Main
-}
-
-// MARK: - Main
-struct Main: Decodable {
-    let temp: Float
-}
-
-// MARK: - Weather
-struct Weather: Decodable {
-    let weatherDescription, icon: String
-    
-    enum CodingKeys: String, CodingKey {
-        case weatherDescription = "description"
-        case icon
-    }
-}
-
 class WeatherStation {
     weak var delegate: sendWeatherStationDatasDelegate?
     
-    public let paris = City(name: .paris)
-    public let newYork = City(name: .newYork)
-    public var iconResponses = 0 {
-        didSet {
-            if self.iconResponses > 2 {
-                self.iconResponses = 0
-            }
-        }
+    public enum WeatherDataTaskError: Error {
+        case unableToDecodeData
     }
     
-    private let weatherRequest = NetworkService(url: "http://api.openweathermap.org/data/2.5/group?id=5128581,2988507&lang=fr&units=metric&appid=cc7f297c71ae7bee297e310c4e0c96cc") //swiftlint:disable:this line_length
+    public let paris = City(name: .paris)
+    public let newYork = City(name: .newYork)
     
-    public func refreshWeather() {
+    public var weatherRequest = NetworkService(url: "http://api.openweathermap.org/data/2.5/group?id=5128581,2988507&lang=fr&units=metric&appid=cc7f297c71ae7bee297e310c4e0c96cc") //swiftlint:disable:this line_length
+    public var weatherIconRequest: NetworkService?
+    
+    public func refreshWeather(callback: @escaping (Result<Void, Error>) -> Void) {
         weatherRequest.getData { result in
             switch result {
             case .failure(let error):
-                self.delegate?.sendAlert(with: error)
+                callback(.failure(error))
             case .success(let data):
-                guard let weatherData = try? JSONDecoder().decode(WeatherData.self, from: data) else {
-                    print("Unable to decode data")
+                guard let weatherData = try? JSONDecoder().decode(DataDecoder.WeatherData.self, from: data) else {
+                    callback(.failure(WeatherDataTaskError.unableToDecodeData))
                     return
                 }
                 
                 self.newYork.temperature = weatherData.list[0].main.temp
                 self.newYork.weather = weatherData.list[0].weather[0].weatherDescription
-                let newYorkIconRequest = NetworkService(url:
-                    "http://openweathermap.org/img/wn/\(weatherData.list[0].weather[0].icon)@2x.png")
-                newYorkIconRequest.getData { result in
-                    switch result {
-                    case .success(let data):
-                        self.newYork.weatherIcon = data
-                        print(data)
-                    case .failure(let error):
-                        self.delegate?.sendAlert(with: error)
-                    }
-                    self.iconResponses += 1
-                    self.delegate?.displayWeather(in: .newYork)
-                }
-                
                 self.paris.temperature = weatherData.list[1].main.temp
                 self.paris.weather = weatherData.list[1].weather[0].weatherDescription
-                let parisIconRequest = NetworkService(url:
-                    "http://openweathermap.org/img/wn/\(weatherData.list[1].weather[0].icon)@2x.png")
-                parisIconRequest.getData { result in
-                    switch result {
-                    case .success(let data):
-                        self.paris.weatherIcon = data
-                        print(data)
-                    case .failure(let error):
-                        self.delegate?.sendAlert(with: error)
-                    }
-                    self.iconResponses += 1
-                    self.delegate?.displayWeather(in: .paris)
-                }
+                
+                callback(.success(()))
+            }
+        }
+    }
+    
+    public func getWeatherIcon(for city: City, callback: @escaping (Result<Void, Error>) -> Void) {
+        if city.weatherIconCode != "test" {
+            weatherIconRequest = NetworkService(url:
+                "http://openweathermap.org/img/wn/\(city.weatherIconCode!)@2x.png")
+        }
+        
+        weatherIconRequest?.getData { result in
+            switch result {
+            case .success(let data):
+                city.weatherIcon = data
+                callback(.success(()))
+            case .failure(let error):
+                callback(.failure(error))
             }
         }
     }

@@ -17,22 +17,24 @@ extension SharedController {
     func sendAlert(with type: Error) {
         let message: String
         switch type {
-        case NetworkService.NetworkError.noData, WeatherIconService.WeatherIconDataTaskError.noData:
+        case NetworkService.NetworkError.noData:
             message = "Impossible de mettre à jour le taux de change"
-        case NetworkService.NetworkError.error, WeatherIconService.WeatherIconDataTaskError.error:
+        case NetworkService.NetworkError.error:
             message = "Une erreur est survenue lors de la mise à jour du taux de change"
-        case NetworkService.NetworkError.responseNot200, WeatherIconService.WeatherIconDataTaskError.responseNot200:
+        case NetworkService.NetworkError.responseNot200:
             message = "Une erreur est survenue lors de la mise à jour du taux de change"
-        case ChangeRateService.ChangeRateDataTaskError.unableToDecodeData:
+        case Converter.ConvertError.unableToDecodeData:
             message = "Impossible de mettre à jour le taux de change"
-        case ChangeRateService.ChangeRateDataTaskError.APINoSuccess:
+        case Converter.ConvertError.APINoSuccess:
             message = "Une erreur est survenue lors de la mise à jour du taux de change"
-        case ChangeRateService.ChangeRateDataTaskError.noChangeRateInData:
+        case Converter.ConvertError.noChangeRateInData:
             message = "Impossible de mettre à jour le taux de change"
         case Converter.ConvertError.notANumber:
             message = "Le texte entré n'est pas un nombre"
         case Translator.TranslationDataTaskError.unableToDecodeData:
             message = "Une erreur est survenue lors de la récupération de la traduction"
+        case WeatherStation.WeatherDataTaskError.unableToDecodeData:
+            message = "Une erreur est survenue lors de la récupération de la météo"
         default:
             message = "Erreur: Inconnue (\(type))"
         }

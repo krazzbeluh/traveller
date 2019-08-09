@@ -13,7 +13,7 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
         super.viewDidLoad()
         
         weatherStation.delegate = self
-        weatherStation.refreshWeather()
+        refreshWeather()
         
         unitButton.contentHorizontalAlignment = .fill
         unitButton.contentVerticalAlignment = .fill
@@ -66,11 +66,6 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
                 newYorkIcon.image = UIImage(data: iconData)
             }
         }
-        
-        if weatherStation.iconResponses == 2 {
-            weatherStation.iconResponses = 0
-            switchActivityIndicator(shown: false)
-        }
     }
     
     private func switchActivityIndicator(shown: Bool) {
@@ -78,9 +73,36 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
         reloadButton.isHidden = shown
     }
     
+    private func refreshWeather() {
+        weatherStation.refreshWeather { result in
+            switch result {
+            case .success:
+                func testResult(with result: Result<Void, Error>, for city: City) -> Data {
+                    switch result {
+                    case .success:
+                        return city.weatherIcon!
+                    case .failure(let error):
+                        self.sendAlert(with: error)
+                    }
+                    return Data()
+                }
+                
+                self.weatherStation.getWeatherIcon(for: self.weatherStation.newYork) { result in
+                    self.newYorkIcon.image = UIImage(data: testResult(with: result, for: self.weatherStation.newYork))
+                }
+                
+                self.weatherStation.getWeatherIcon(for: self.weatherStation.paris) { result in
+                    self.parisIcon.image = UIImage(data: testResult(with: result, for: self.weatherStation.paris))
+                }
+            case .failure(let error):
+                self.sendAlert(with: error)
+            }
+        }
+    }
+    
     @IBAction func refreshButton() {
         switchActivityIndicator(shown: true)
-        weatherStation.refreshWeather()
+        refreshWeather()
     }
     
     @IBAction func switchDegreesUnit(_ sender: Any) {
