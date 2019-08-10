@@ -58,11 +58,6 @@ extension DataDecoder {
     }
     
     public struct Weather: Decodable {
-        let weatherDescription, icon: String
-        
-        enum CodingKeys: String, CodingKey {
-            case weatherDescription = "description"
-            case icon
-        }
+        let description: String, icon: String
     }
 }

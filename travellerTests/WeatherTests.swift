@@ -123,8 +123,10 @@ class WeatherTests: XCTestCase {
             case .success:
                 XCTAssertEqual(self.weatherStation.newYork.temperature, 19.79)
                 XCTAssertEqual(self.weatherStation.newYork.weather, "ciel dégagé")
+                XCTAssertEqual(self.weatherStation.newYork.weatherIconCode, "01d")
                 XCTAssertEqual(self.weatherStation.paris.temperature, 24.27)
                 XCTAssertEqual(self.weatherStation.paris.weather, "couvert")
+                XCTAssertEqual(self.weatherStation.paris.weatherIconCode, "04d")
                 expectation.fulfill()
             case .failure:
                 XCTAssert(false)

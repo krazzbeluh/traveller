@@ -37,9 +37,11 @@ class WeatherStation {
                 }
                 
                 self.newYork.temperature = weatherData.list[0].main.temp
-                self.newYork.weather = weatherData.list[0].weather[0].weatherDescription
+                self.newYork.weather = weatherData.list[0].weather[0].description
+                self.newYork.weatherIconCode = weatherData.list[0].weather[0].icon
                 self.paris.temperature = weatherData.list[1].main.temp
-                self.paris.weather = weatherData.list[1].weather[0].weatherDescription
+                self.paris.weather = weatherData.list[1].weather[0].description
+                self.paris.weatherIconCode = weatherData.list[1].weather[0].icon
                 
                 callback(.success(()))
             }

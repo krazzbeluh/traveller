@@ -73,6 +73,14 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
         reloadButton.isHidden = shown
     }
     
+    var iconResponses = 0 {
+        didSet {
+            if self.iconResponses == 2 {
+                switchActivityIndicator(shown: false)
+                self.iconResponses = 0
+            }
+        }
+    }
     private func refreshWeather() {
         weatherStation.refreshWeather { result in
             switch result {
@@ -89,10 +97,12 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
                 
                 self.weatherStation.getWeatherIcon(for: self.weatherStation.newYork) { result in
                     self.newYorkIcon.image = UIImage(data: testResult(with: result, for: self.weatherStation.newYork))
+                    self.iconResponses += 1
                 }
                 
                 self.weatherStation.getWeatherIcon(for: self.weatherStation.paris) { result in
                     self.parisIcon.image = UIImage(data: testResult(with: result, for: self.weatherStation.paris))
+                    self.iconResponses += 1
                 }
             case .failure(let error):
                 self.sendAlert(with: error)
