@@ -34,7 +34,7 @@ class Converter {
     }
     
     public func convert(_ numberText: String?) throws {
-        guard let value = Float(numberText!) else {
+        guard let value = Float(numberText!.replacingOccurrences(of: ",", with: ".")) else {
             throw ConvertError.notANumber
         }
         

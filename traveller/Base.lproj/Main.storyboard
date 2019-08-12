@@ -144,7 +144,7 @@
                                                 <color key="backgroundColor" name="Blue"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 <connections>
                                                     <action selector="didTapDone:" destination="xWh-cZ-9hs" eventType="editingDidEnd" id="hxt-O8-mEc"/>
                                                 </connections>
