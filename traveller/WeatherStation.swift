@@ -15,12 +15,12 @@ protocol sendWeatherStationDatasDelegate: SharedController {
 class WeatherStation {
     weak var delegate: sendWeatherStationDatasDelegate?
     
+    public let paris = City(name: .paris)
+    public let newYork = City(name: .newYork)
+    
     public enum WeatherDataTaskError: Error {
         case unableToDecodeData
     }
-    
-    public let paris = City(name: .paris)
-    public let newYork = City(name: .newYork)
     
     public var weatherRequest = NetworkService(url: "http://api.openweathermap.org/data/2.5/group?id=5128581,2988507&lang=fr&units=metric&appid=cc7f297c71ae7bee297e310c4e0c96cc") //swiftlint:disable:this line_length
     public var weatherIconRequest: NetworkService?
@@ -49,7 +49,7 @@ class WeatherStation {
     }
     
     public func getWeatherIcon(for city: City, callback: @escaping (Result<Void, Error>) -> Void) {
-        if city.weatherIconCode != "test" {
+        if city.weatherIconCode != "test" { // the following lines are used to test this method with URLSessionFake
             weatherIconRequest = NetworkService(url:
                 "http://openweathermap.org/img/wn/\(city.weatherIconCode!)@2x.png")
         }

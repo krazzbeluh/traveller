@@ -21,6 +21,7 @@ class ConverterViewController: UIViewController, SharedController, sendConverter
         converter.delegate = self
         converter.getChangeRateValue { _ in }
         
+//        setting up convertButton displaay (image disposition and borders)
         convertButton.contentHorizontalAlignment = .fill
         convertButton.contentVerticalAlignment = .fill
         convertButton.imageView?.contentMode = .scaleAspectFill
@@ -30,6 +31,7 @@ class ConverterViewController: UIViewController, SharedController, sendConverter
         convertButton.layer.borderColor = UIColor(named: "Blue")?.cgColor
     }
     
+//    hidding navBar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -40,6 +42,7 @@ class ConverterViewController: UIViewController, SharedController, sendConverter
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+//    sharing converter with converterDetail
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToConverterDetail" {
             let successVC = segue.destination as! ConverterDetailViewController
@@ -70,7 +73,7 @@ class ConverterViewController: UIViewController, SharedController, sendConverter
         performSegue(withIdentifier: "segueToConverterDetail", sender: self)
     }
     
-    private func convert() {
+    public func convert() {
         do {
             try converter.convert(moneyInEuro.text)
         } catch let error as Converter.ConvertError {
@@ -78,9 +81,5 @@ class ConverterViewController: UIViewController, SharedController, sendConverter
         } catch {
             fatalError("Oops ! Something went wrong !")
         }
-    }
-    
-    func displayChangeRate() {
-        convert()
     }
 }

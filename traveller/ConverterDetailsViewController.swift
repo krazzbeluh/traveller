@@ -11,8 +11,7 @@ import UIKit
 class ConverterDetailViewController: UIViewController, SharedController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        changeRateText.text = "1 € = \(converter.changeRate) $"
-        dateText.text = "Taux au \(dateFormatter.string(from: converter.changeRateDay)) :"
+        displayChangeRate()
         switchActivityIndicator(shown: false)
         
         refreshButton.contentHorizontalAlignment = .fill

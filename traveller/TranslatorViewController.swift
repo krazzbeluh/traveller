@@ -15,6 +15,7 @@ class TranslatorViewController: UIViewController, SharedController, sendTranslat
         
         translator.delegate = self
         
+        //        setting up convertButton displaay (image disposition and borders)
         translateButton.contentHorizontalAlignment = .fill
         translateButton.contentVerticalAlignment = .fill
         translateButton.imageView?.contentMode = .scaleAspectFill
@@ -25,7 +26,7 @@ class TranslatorViewController: UIViewController, SharedController, sendTranslat
     }
     
     let translator = Translator()
-    var textInFrench: String {
+    internal var textInFrench: String {
         return textToTranslate.text
     }
     
@@ -35,6 +36,10 @@ class TranslatorViewController: UIViewController, SharedController, sendTranslat
     
     func hideKeyboard() {
         textToTranslate.resignFirstResponder()
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: Any) {
+        hideKeyboard()
     }
     
     func displayTranslation(_ translation: String) {
@@ -53,7 +58,4 @@ class TranslatorViewController: UIViewController, SharedController, sendTranslat
         }
     }
     
-    @IBAction func dismissKeyboard(_ sender: Any) {
-        hideKeyboard()
-    }
 }

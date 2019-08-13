@@ -15,6 +15,7 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
         weatherStation.delegate = self
         refreshWeather()
         
+//        setting up unitButton and reloadButton (image disposition and border)
         unitButton.contentHorizontalAlignment = .fill
         unitButton.contentVerticalAlignment = .fill
         unitButton.imageView?.contentMode = .scaleAspectFill
@@ -31,7 +32,7 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
     }
     
     private let weatherStation = WeatherStation()
-    private var temperatureIsCelsius = true
+    private var temperatureIsCelsius = true // var used to know if displayed temperature is in Celsius or Farenheit
     
     @IBOutlet weak var parisTemperature: UILabel!
     @IBOutlet weak var parisIcon: UIImageView!
@@ -41,7 +42,7 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    func displayWeather(in city: City.CityName) {
+    internal func displayWeather(in city: City.CityName) {
         switch city {
         case .paris:
             let temperature: String
@@ -73,7 +74,7 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
         reloadButton.isHidden = shown
     }
     
-    var iconResponses = 0 {
+    var iconResponses = 0 { // this var is used to switch activityIndicator when all requests are ended
         didSet {
             if self.iconResponses == 2 {
                 switchActivityIndicator(shown: false)
@@ -81,6 +82,7 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
             }
         }
     }
+    
     private func refreshWeather() {
         weatherStation.refreshWeather { result in
             switch result {

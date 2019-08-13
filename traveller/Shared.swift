@@ -6,6 +6,8 @@
 //  Copyright © 2019 Paul Leclerc. All rights reserved.
 //
 
+// this file is a protocol used to add methods to all Controller classes
+
 import Foundation
 import UIKit
 
