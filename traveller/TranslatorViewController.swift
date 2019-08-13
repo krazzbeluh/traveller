@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TranslatorViewController: UIViewController, SharedController, sendTranslatorDatasDelegate {
+class TranslatorViewController: UIViewController, SendTranslatorDatasDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class TranslatorViewController: UIViewController, SharedController, sendTranslat
             case .success(let translation):
                 self.displayTranslation(translation)
             case .failure(let error):
-                self.sendAlert(with: error)
+                self.showAlert(with: error)
             }
         }
     }

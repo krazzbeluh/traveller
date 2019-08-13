@@ -9,7 +9,7 @@
 // refreshing resets convertion
 
 // delegate for communication between model and controller
-protocol sendConverterDatasDelegate: SharedController {
+protocol SendConverterDatasDelegate: DisplayAlert {
     func displayDollar()
     func convert()
 }
@@ -17,7 +17,7 @@ protocol sendConverterDatasDelegate: SharedController {
 import Foundation
 
 class Converter {
-    weak var delegate: sendConverterDatasDelegate?
+    weak var delegate: SendConverterDatasDelegate?
     public var changeRate: Float = 0.0
     public var changeRateDay = Date()
     
@@ -43,7 +43,7 @@ class Converter {
         do {
             try convert("1")
         } catch let error as ConvertError {
-            delegate?.sendAlert(with: error)
+            delegate?.showAlert(with: error)
         } catch {
             fatalError("Oops ! Something went wrong !")
         }

@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol sendWeatherStationDatasDelegate: SharedController {
+protocol SendWeatherStationDatasDelegate: DisplayAlert {
     func displayWeather(in city: City.CityName)
 }
 
 class WeatherStation {
-    weak var delegate: sendWeatherStationDatasDelegate?
+    weak var delegate: SendWeatherStationDatasDelegate?
     
     public let paris = City(name: .paris)
     public let newYork = City(name: .newYork)

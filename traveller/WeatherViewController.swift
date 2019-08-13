@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, SharedController, sendWeatherStationDatasDelegate {
+class WeatherViewController: UIViewController, SendWeatherStationDatasDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +32,7 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
     }
     
     private let weatherStation = WeatherStation()
-    private var temperatureIsCelsius = true // var used to know if displayed temperature is in Celsius or Farenheit
+    private var temperatureIsCelsius = true // var used to know if displayed temperature is in Celsius or Fahrenheit
     
     @IBOutlet weak var parisTemperature: UILabel!
     @IBOutlet weak var parisIcon: UIImageView!
@@ -69,6 +69,11 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
         }
     }
     
+    func displayWeather() {
+        displayWeather(in: .paris)
+        displayWeather(in: .newYork)
+    }
+    
     private func switchActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
         reloadButton.isHidden = shown
@@ -92,7 +97,7 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
                     case .success:
                         return city.weatherIcon!
                     case .failure(let error):
-                        self.sendAlert(with: error)
+                        self.showAlert(with: error)
                     }
                     return Data()
                 }
@@ -107,7 +112,7 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
                     self.iconResponses += 1
                 }
             case .failure(let error):
-                self.sendAlert(with: error)
+                self.showAlert(with: error)
             }
         }
     }
@@ -120,13 +125,11 @@ class WeatherViewController: UIViewController, SharedController, sendWeatherStat
     @IBAction func switchDegreesUnit(_ sender: Any) {
         if temperatureIsCelsius {
             temperatureIsCelsius = false
-            parisTemperature.text = "\(weatherStation.paris.temperatureF) °F"
-            newYorkTemperature.text = "\(weatherStation.newYork.temperatureF) °F"
+            displayWeather()
             unitButton.setImage(#imageLiteral(resourceName: "Celsius"), for: .normal)
         } else {
             temperatureIsCelsius = true
-            parisTemperature.text = "\(weatherStation.paris.temperature) °C"
-            newYorkTemperature.text = "\(weatherStation.newYork.temperature) °C"
+            displayWeather()
             unitButton.setImage(#imageLiteral(resourceName: "Farenheit"), for: .normal)
         }
         

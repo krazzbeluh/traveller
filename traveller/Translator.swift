@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol sendTranslatorDatasDelegate: SharedController {
+protocol SendTranslatorDatasDelegate: DisplayAlert {
     var textInFrench: String {get}
 }
 
 class Translator {
-    weak var delegate: sendTranslatorDatasDelegate?
+    weak var delegate: SendTranslatorDatasDelegate?
     
     enum TranslationDataTaskError: Error {
         case unableToDecodeData

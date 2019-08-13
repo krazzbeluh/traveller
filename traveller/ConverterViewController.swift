@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConverterViewController: UIViewController, SharedController, sendConverterDatasDelegate {
+class ConverterViewController: UIViewController, SendConverterDatasDelegate {
     
     private let converter = Converter()
     @IBOutlet weak var moneyInEuro: UITextField!
@@ -77,7 +77,7 @@ class ConverterViewController: UIViewController, SharedController, sendConverter
         do {
             try converter.convert(moneyInEuro.text)
         } catch let error as Converter.ConvertError {
-            sendAlert(with: error)
+            showAlert(with: error)
         } catch {
             fatalError("Oops ! Something went wrong !")
         }

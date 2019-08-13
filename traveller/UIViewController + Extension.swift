@@ -6,17 +6,15 @@
 //  Copyright © 2019 Paul Leclerc. All rights reserved.
 //
 
-// this file is a protocol used to add methods to all Controller classes
-
 import Foundation
 import UIKit
 
-protocol SharedController: UIViewController {
-    func sendAlert(with type: Error)
+protocol DisplayAlert: UIViewController {
+    func showAlert(with type: Error)
 }
 
-extension SharedController {
-    func sendAlert(with type: Error) {
+extension UIViewController: DisplayAlert {
+    func showAlert(with type: Error) {
         let message: String
         switch type {
         case NetworkService.NetworkError.noData:

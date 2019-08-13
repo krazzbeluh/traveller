@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConverterDetailViewController: UIViewController, SharedController {
+class ConverterDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayChangeRate()
@@ -50,7 +50,7 @@ class ConverterDetailViewController: UIViewController, SharedController {
             switch result {
             case .success(_): break
             case .failure(let error):
-                self.sendAlert(with: error)
+                self.showAlert(with: error)
             }
             self.displayChangeRate()
             self.switchActivityIndicator(shown: false)

@@ -29,7 +29,7 @@
 		9498EB8A22FB78BD00A74E54 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498EB8922FB78BD00A74E54 /* WeatherTests.swift */; };
 		9498EB8D22FC565000A74E54 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9498EB8C22FC565000A74E54 /* .swiftlint.yml */; };
 		9498EB8F22FC5C4B00A74E54 /* Translation.json in Resources */ = {isa = PBXBuildFile; fileRef = 9498EB8E22FC5C4B00A74E54 /* Translation.json */; };
-		9498EB9422FCC64D00A74E54 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498EB9322FCC64D00A74E54 /* Shared.swift */; };
+		9498EB9422FCC64D00A74E54 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498EB9322FCC64D00A74E54 /* UIViewController + Extension.swift */; };
 		9498EB9622FD7ABC00A74E54 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498EB9522FD7ABC00A74E54 /* DataDecoder.swift */; };
 		9498EB9A22FD824E00A74E54 /* RateNotSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = 9498EB9922FD824E00A74E54 /* RateNotSuccess.json */; };
 		9498EB9C22FD830300A74E54 /* RateWithoutUSD.json in Resources */ = {isa = PBXBuildFile; fileRef = 9498EB9B22FD830300A74E54 /* RateWithoutUSD.json */; };
@@ -74,7 +74,7 @@
 		9498EB8922FB78BD00A74E54 /* WeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTests.swift; sourceTree = "<group>"; };
 		9498EB8C22FC565000A74E54 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .swiftlint.yml; path = /Users/paulleclerc/Documents/traveller/.swiftlint.yml; sourceTree = "<absolute>"; };
 		9498EB8E22FC5C4B00A74E54 /* Translation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Translation.json; sourceTree = "<group>"; };
-		9498EB9322FCC64D00A74E54 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		9498EB9322FCC64D00A74E54 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		9498EB9522FD7ABC00A74E54 /* DataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
 		9498EB9922FD824E00A74E54 /* RateNotSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RateNotSuccess.json; sourceTree = "<group>"; };
 		9498EB9B22FD830300A74E54 /* RateWithoutUSD.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RateWithoutUSD.json; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 				948806B022F5D823000A6D7D /* ConverterViewController.swift */,
 				948806B122F5D823000A6D7D /* TranslatorViewController.swift */,
 				948806B222F5D823000A6D7D /* WeatherViewController.swift */,
-				9498EB9322FCC64D00A74E54 /* Shared.swift */,
+				9498EB9322FCC64D00A74E54 /* UIViewController + Extension.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -348,7 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9498EB9422FCC64D00A74E54 /* Shared.swift in Sources */,
+				9498EB9422FCC64D00A74E54 /* UIViewController + Extension.swift in Sources */,
 				948806B422F5D823000A6D7D /* TranslatorViewController.swift in Sources */,
 				948806B522F5D823000A6D7D /* WeatherViewController.swift in Sources */,
 				948806A922F5D812000A6D7D /* Translator.swift in Sources */,
