@@ -92,23 +92,21 @@ class WeatherViewController: UIViewController, SendWeatherStationDatasDelegate {
         weatherStation.refreshWeather { result in
             switch result {
             case .success:
-                func testResult(with result: Result<Void, Error>, for city: City) -> Data {
-                    switch result {
-                    case .success:
-                        return city.weatherIcon!
-                    case .failure(let error):
+                func testResult(with result: Result<Void, Error>, for city: City) {
+                    if case .failure(let error) = result {
                         self.showAlert(with: error)
                     }
-                    return Data()
                 }
                 
                 self.weatherStation.getWeatherIcon(for: self.weatherStation.newYork) { result in
-                    self.newYorkIcon.image = UIImage(data: testResult(with: result, for: self.weatherStation.newYork))
+                    testResult(with: result, for: self.weatherStation.newYork)
+                    self.displayWeather(in: .newYork)
                     self.iconResponses += 1
                 }
                 
                 self.weatherStation.getWeatherIcon(for: self.weatherStation.paris) { result in
-                    self.parisIcon.image = UIImage(data: testResult(with: result, for: self.weatherStation.paris))
+                    testResult(with: result, for: self.weatherStation.paris)
+                    self.displayWeather(in: .paris)
                     self.iconResponses += 1
                 }
             case .failure(let error):

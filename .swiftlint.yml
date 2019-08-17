@@ -4,6 +4,7 @@ disabled_rules:
 - private_over_fileprivate
 - force_try
 - empty_enum_arguments
+- class_delegate_protocol
 identifier_name:
 min_length: # only min_length
 error: 3 # only error
